@@ -1,0 +1,3 @@
+name: LuckPermsPronouns
+version: '${project.version}'
+main: dev.neuralnexus.luckpermspronouns.LuckPermsPronouns
