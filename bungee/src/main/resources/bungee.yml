@@ -1,0 +1,8 @@
+name: LPPronouns
+version: '${version}'
+author: p0t4t0sandwich
+main: ca.sperrer.p0t4t0sandwich.lppronouns.bungee.BungeeMain
+commands:
+  pronouns:
+    description: Shows or sets a player's pronouns.
+    usage: /pronouns [pronouns]
