@@ -6,6 +6,7 @@ dependencies {
     // General dependencies
     implementation("dev.dejvokep:boosted-yaml:1.3")
     implementation("com.zaxxer:HikariCP:4.0.3")
+    implementation("mysql:mysql-connector-java:8.0.26")
     implementation('org.mongodb:mongodb-driver-sync:4.9.1')
     implementation('org.mongodb:mongodb-driver-core:4.9.1')
     implementation('org.mongodb:bson:4.9.1')
@@ -21,10 +22,16 @@ shadowJar {
     dependencies {
         include(dependency("dev.dejvokep:boosted-yaml:1.3"))
         include(dependency("com.zaxxer:HikariCP:4.0.3"))
+        include(dependency("mysql:mysql-connector-java:8.0.26"))
         include(dependency('org.mongodb:mongodb-driver-sync:4.9.1'))
         include(dependency('org.mongodb:mongodb-driver-core:4.9.1'))
         include(dependency('org.mongodb:bson:4.9.1'))
     }
+
+    relocate 'dev.dejvokep', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.dejvokep'
+    relocate 'com.zaxxer', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.zaxxer'
+    relocate 'mysql', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.mysql'
+    relocate 'org.mongodb', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.mongodb'
 }
 
 artifacts {

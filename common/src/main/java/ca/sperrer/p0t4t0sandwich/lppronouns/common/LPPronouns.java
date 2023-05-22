@@ -4,6 +4,7 @@ import ca.sperrer.p0t4t0sandwich.lppronouns.common.storage.DataSource;
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.storage.Database;
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.pronouns.PronounsData;
 import dev.dejvokep.boostedyaml.YamlDocument;
+import dev.dejvokep.boostedyaml.block.Block;
 
 import java.io.File;
 import java.io.IOException;
@@ -83,6 +84,12 @@ public class LPPronouns {
         database = DataSource.getDatabase(type, config);
 
         pronounsData = DataSource.getPronounsData(type, database, config);
+
+        //
+        System.out.println(type);
+        System.out.println(pronounsData);
+        //
+
 //        pronounsData = DataSource.getTrackerData(type, database, getPronounsMap());
 
         useLogger("LPPronouns has been started!");
@@ -93,7 +100,15 @@ public class LPPronouns {
      * @return The pronouns
      */
     public HashMap<String, String> getPronounsMap() {
-        return (HashMap<String, String>) config.getBlock("pronouns").getStoredValue();
+        HashMap<String, String> pronouns = new HashMap<>();
+
+        HashMap<String, Block> pronouns_config = (HashMap<String, Block>) config.getBlock("pronouns").getStoredValue();
+
+        for (Map.Entry<String, Block> entry: pronouns_config.entrySet()) {
+            pronouns.put(entry.getKey(), (String) entry.getValue().getStoredValue());
+        }
+
+        return pronouns;
     }
 
     /**

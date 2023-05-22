@@ -34,7 +34,7 @@ public class MongoDBPronounsData extends PronounsData {
                 Document new_player_data = new Document();
                 new_player_data.append("player_name", player.getName());
                 new_player_data.append("player_uuid", player_uuid);
-                new_player_data.append("pronouns", "");
+                new_player_data.append("pronouns", "unspecified");
                 collection.insertOne(new_player_data);
                 return "";
             }
@@ -68,7 +68,7 @@ public class MongoDBPronounsData extends PronounsData {
                 Document new_player_data = new Document();
                 new_player_data.append("player_name", player.getName());
                 new_player_data.append("player_uuid", player_uuid);
-                new_player_data.append("pronouns", "");
+                new_player_data.append("pronouns", "unspecified");
                 collection.insertOne(new_player_data);
             }
 
