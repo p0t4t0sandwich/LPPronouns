@@ -29,8 +29,8 @@ shadowJar {
     }
 
     relocate 'dev.dejvokep', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.dejvokep'
-    relocate 'com.zaxxer', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.zaxxer'
-    relocate 'mysql', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.mysql'
+    relocate 'com.zaxxer.hikari', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.hikari'
+    relocate 'com.mysql', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.mysql'
     relocate 'org.mongodb', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.mongodb'
 }
 

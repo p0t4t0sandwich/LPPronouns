@@ -5,6 +5,8 @@ import ca.sperrer.p0t4t0sandwich.lppronouns.common.pronouns.MySQLPronounsData;
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.pronouns.PronounsData;
 import dev.dejvokep.boostedyaml.YamlDocument;
 
+import java.util.Arrays;
+
 
 public interface DataSource {
     /**
@@ -17,17 +19,14 @@ public interface DataSource {
         try {
             switch (type) {
                 case "mysql":
-                    System.out.println("Connecting to MySQL...");
                     return new MySQLDatabase(config);
                 case "mongodb":
-                    System.out.println("Connecting to MongoDB...");
                     return new MongoDBDatabase(config);
                 default:
-                    System.out.println("Invalid database type! Attempting to try MySQL...");
-                    return new MySQLDatabase(config);
+                    return null;
             }
         } catch (Exception e) {
-            System.out.println(e);
+            System.err.println(Arrays.toString(e.getStackTrace()));
             return null;
         }
     }
@@ -46,8 +45,7 @@ public interface DataSource {
                 case "mongodb":
                     return new MongoDBPronounsData(database, config);
                 default:
-                    System.out.println("Invalid database type! Attempting to try MySQL...");
-                    return new MySQLPronounsData(database, config);
+                    return null;
                 }
         } catch (Exception e) {
             System.out.println(e);

@@ -10,8 +10,10 @@ import java.sql.SQLException;
 public class MySQLDatabase extends Database<Connection> {
     /**
      * Class used to abstract the SQL data source.
+     * config: The configuration for the SQL data source.
      * ds: The data source.
      */
+    private static final HikariConfig dbconfig = new HikariConfig();
     private static HikariDataSource ds;
 
     /**
@@ -30,13 +32,11 @@ public class MySQLDatabase extends Database<Connection> {
         if (port == 0) {
             port = 3306;
         }
-        String URI = "jdbc:mysql://" + host + ":" + port + "/" + database;
-
-        HikariConfig dbconfig = new HikariConfig();
+        String URI = "jdbc:mysql://" + host + ":" + port + "/" + database + "?useSSL=false&serverTimezone=UTC";
         dbconfig.setJdbcUrl(URI);
         dbconfig.setUsername(username);
         dbconfig.setPassword(password);
-        dbconfig.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        dbconfig.setDriverClassName("ca.sperrer.p0t4t0sandwich.lppronouns.lib.mysql.cj.jdbc.Driver");
         dbconfig.addDataSourceProperty("cachePrepStmts", "true");
         dbconfig.addDataSourceProperty("prepStmtCacheSize", "250");
         dbconfig.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
