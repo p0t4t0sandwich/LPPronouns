@@ -6,6 +6,7 @@ import dev.dejvokep.boostedyaml.YamlDocument;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Arrays;
 
 public class MySQLDatabase extends Database<Connection> {
     /**
@@ -32,7 +33,7 @@ public class MySQLDatabase extends Database<Connection> {
         if (port == 0) {
             port = 3306;
         }
-        String URI = "jdbc:mysql://" + host + ":" + port + "/" + database + "?useSSL=false&serverTimezone=UTC";
+        String URI = "jdbc:mysql://" + host + ":" + port + "/" + database;
         dbconfig.setJdbcUrl(URI);
         dbconfig.setUsername(username);
         dbconfig.setPassword(password);
@@ -51,7 +52,7 @@ public class MySQLDatabase extends Database<Connection> {
         try {
             return ds.getConnection();
         } catch (SQLException e) {
-            System.out.println(e);
+            System.err.println(Arrays.toString(e.getStackTrace()));
             return null;
         }
     }

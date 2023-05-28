@@ -83,12 +83,7 @@ public class LPPronouns {
         String type = config.getString("storage.type");
         database = DataSource.getDatabase(type, config);
 
-        pronounsData = DataSource.getPronounsData(type, database, config);
-
-        //
-        System.out.println(type);
-        System.out.println(pronounsData);
-        //
+        pronounsData = DataSource.getPronounsData(database, config);
 
 //        pronounsData = DataSource.getTrackerData(type, database, getPronounsMap());
 

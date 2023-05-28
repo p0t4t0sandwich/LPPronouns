@@ -8,14 +8,14 @@ import dev.dejvokep.boostedyaml.YamlDocument;
 import java.util.Arrays;
 
 
-public interface DataSource {
+public class DataSource {
     /**
      * Get the database
      * @param type The type of database
      * @param config The config file
      * @return The database
      */
-    static Database getDatabase(String type, YamlDocument config) {
+    public static Database getDatabase(String type, YamlDocument config) {
         try {
             switch (type) {
                 case "mysql":
@@ -33,13 +33,12 @@ public interface DataSource {
 
     /**
      * Get the pronouns data class
-     * @param type The type of database
      * @param database The database
      * @return The pronouns data class
      */
-    static PronounsData getPronounsData(String type, Database database, YamlDocument config) {
+    public static PronounsData getPronounsData(Database database, YamlDocument config) {
         try {
-            switch (type) {
+            switch (database.getType()) {
                 case "mysql":
                     return new MySQLPronounsData(database, config);
                 case "mongodb":
@@ -48,7 +47,7 @@ public interface DataSource {
                     return null;
                 }
         } catch (Exception e) {
-            System.out.println(e);
+            System.err.println(Arrays.toString(e.getStackTrace()));
             return null;
         }
     }
