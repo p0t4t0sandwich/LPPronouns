@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 @Mod(ForgeMain.MODID)
 public class ForgeMain {
     public LPPronouns LPPronouns;
-    public static final String MODID = "playtimeutils";
+    public static final String MODID = "lppronouns";
     public static final Logger logger = LogUtils.getLogger();
 
     // Get server type

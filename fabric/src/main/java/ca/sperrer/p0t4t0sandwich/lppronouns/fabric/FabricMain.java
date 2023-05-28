@@ -11,7 +11,7 @@ public class FabricMain implements DedicatedServerModInitializer {
     public LPPronouns LPPronouns;
 
     // Logger
-    public final Logger logger = LoggerFactory.getLogger("playtimeutils");
+    public final Logger logger = LoggerFactory.getLogger("lppronouns");
 
     // Get server type
     public String getServerType() {
