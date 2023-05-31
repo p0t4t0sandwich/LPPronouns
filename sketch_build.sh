@@ -41,7 +41,7 @@ unzip ./velocity.zip -d ./velocity
 
 # Process Jars
 cp -r ./bukkit/ca/sperrer/p0t4t0sandwich/$PROJ_NAME/bukkit ./$PROJ_NAME/ca/sperrer/p0t4t0sandwich/$PROJ_NAME/bukkit
-cp ./bukkit/plugin.yml ./playtimeutils
+cp ./bukkit/plugin.yml ./$PROJ_NAME
 
 cp -r ./bungee/ca/sperrer/p0t4t0sandwich/$PROJ_NAME/bungee ./$PROJ_NAME/ca/sperrer/p0t4t0sandwich/$PROJ_NAME/bungee
 cp ./bungee/bungee.yml ./$PROJ_NAME
