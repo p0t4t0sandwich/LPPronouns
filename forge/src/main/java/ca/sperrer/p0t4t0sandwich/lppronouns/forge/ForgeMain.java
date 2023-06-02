@@ -39,6 +39,8 @@ public class ForgeMain {
         // Register event listener
         MinecraftForge.EVENT_BUS.register(new ForgeEventListener());
 
+        // Register commands
+
         // Mod enable message
         logger.info("[LPPronouns]: LPPronouns has been enabled!");
     }

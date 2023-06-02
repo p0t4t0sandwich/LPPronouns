@@ -119,7 +119,7 @@ public class LPPronouns {
         StringBuilder text = new StringBuilder();
 
         // If player does not have a pronoun set, set it to unspecified
-        if (Objects.equals(args[0], "unspecified") || Objects.equals(args[0], "remove")) {
+        if (Objects.equals(args[0], "none") || Objects.equals(args[0], "remove")) {
             pronounsData.deletePronouns(player);
             text = new StringBuilder("Your pronouns have been removed.");
 

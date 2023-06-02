@@ -7,7 +7,6 @@ public class ForgeUtils {
     /**
      * Maps a Forge Player to a PlayerInstance.
      * @param player Forge Player
-     * @param serverName Name of the server
      * @return PlayerInstance
      */
     public static PlayerInstance mapPlayer(ServerPlayer player) {

@@ -38,6 +38,8 @@ public class FabricMain implements DedicatedServerModInitializer {
         // Register event listeners
         ServerPlayConnectionEvents.JOIN.register(new FabricEventListener());
 
+        // Register commands
+
         // Mod enable message
         logger.info("[LPPronouns]: LPPronouns has been enabled!");
     }

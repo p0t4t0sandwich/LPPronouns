@@ -2,6 +2,7 @@
 version: 1
 
 # Database configuration
+# Supported storage types: mongodb, mysql
 storage:
   type: mongodb
   config:
@@ -13,7 +14,7 @@ storage:
 
 # Pronoun configuration
 pronouns:
-  unspecified: ""
+  none: ""
 
   any: "any"
   other: "other"
