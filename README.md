@@ -12,6 +12,9 @@ GitHub: [Releases](https://github.com/p0t4t0sandwich/LPPronouns/releases)
 
 Spigot: [LPPronouns](https://www.spigotmc.org/resources/lppronouns.110206/)
 
+Hangar: [LPPronouns](https://hangar.papermc.io/p0t4t0sandwich/LPPronouns)
+
+Modrinth: [LPPronouns](https://modrinth.com/plugin/lppronouns)
 
 ## Dependencies
 
