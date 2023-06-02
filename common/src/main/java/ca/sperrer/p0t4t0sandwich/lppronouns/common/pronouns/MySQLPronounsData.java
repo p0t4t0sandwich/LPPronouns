@@ -2,17 +2,22 @@ package ca.sperrer.p0t4t0sandwich.lppronouns.common.pronouns;
 
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.PlayerInstance;
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.storage.Database;
-import dev.dejvokep.boostedyaml.YamlDocument;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.UUID;
 
 public class MySQLPronounsData extends PronounsData {
-    public MySQLPronounsData(Database<Connection> database, YamlDocument config) {
-        super(database, config);
+    /**
+     * Constructor for the MySQLPronounsData class
+     * @param database The database
+     * @param pronounsConfig The pronouns config
+     */
+    public MySQLPronounsData(Database<Connection> database, HashMap<String, String> pronounsConfig) {
+        super(database, pronounsConfig);
     }
 
     /**

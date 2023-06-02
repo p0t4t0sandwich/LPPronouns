@@ -27,10 +27,12 @@ public class PronounsCommand extends Command {
 
                     String text = plugin.LPPronouns.commandHandler(mapPlayer(player), args);
 
-                    player.sendMessage(new ComponentBuilder(text).color(ChatColor.GREEN).create());
+                    player.sendMessage(new ComponentBuilder(text).create());
+                } else {
+                    sender.sendMessage(new ComponentBuilder("§cYou must be a player to use this command.").create());
                 }
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                System.err.println(e);
             }
         });
     }

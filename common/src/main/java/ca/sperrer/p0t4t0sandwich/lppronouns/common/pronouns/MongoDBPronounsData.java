@@ -5,12 +5,18 @@ import ca.sperrer.p0t4t0sandwich.lppronouns.common.PlayerInstance;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import dev.dejvokep.boostedyaml.YamlDocument;
 import org.bson.Document;
 
+import java.util.HashMap;
+
 public class MongoDBPronounsData extends PronounsData {
-    public MongoDBPronounsData(Database<MongoClient> database, YamlDocument config) {
-        super(database, config);
+    /**
+     * Constructor for the MongoDBPronounsData class
+     * @param database The database
+     * @param pronounsConfig The pronouns config
+     */
+    public MongoDBPronounsData(Database<MongoClient> database, HashMap<String, String> pronounsConfig) {
+        super(database, pronounsConfig);
     }
 
     /**

@@ -18,7 +18,7 @@ public class LPPronouns {
      * config: The config file
      * logger: The logger
      * singleton: The singleton instance of the LPPronouns class
-     * STARTED: Whether the PanelServerManager has been started
+     * STARTED: Whether the LPPronouns has been started
      */
     private static YamlDocument config;
     private final Object logger;
@@ -49,7 +49,7 @@ public class LPPronouns {
     }
 
     /**
-     * Getter for the singleton instance of the PanelServerManager class.
+     * Getter for the singleton instance of the LPPronouns class.
      * @return The singleton instance
      */
     public static LPPronouns getInstance() {
@@ -83,9 +83,7 @@ public class LPPronouns {
         String type = config.getString("storage.type");
         database = DataSource.getDatabase(type, config);
 
-        pronounsData = DataSource.getPronounsData(database, config);
-
-//        pronounsData = DataSource.getTrackerData(type, database, getPronounsMap());
+        pronounsData = DataSource.getPronounsData(database, getPronounsMap());
 
         useLogger("LPPronouns has been started!");
     }
@@ -121,12 +119,12 @@ public class LPPronouns {
         StringBuilder text = new StringBuilder();
 
         // If player does not have a pronoun set, set it to unspecified
-        if (args.length > 0 && (Objects.equals(args[0], "unspecified") || Objects.equals(args[0], "remove"))) {
+        if (Objects.equals(args[0], "unspecified") || Objects.equals(args[0], "remove")) {
             pronounsData.deletePronouns(player);
             text = new StringBuilder("Your pronouns have been removed.");
 
             // If the pronoun exists, set it to the specified value
-        } else if (args.length > 0 && pronoun_list.containsKey(args[0])) {
+        } else if (pronoun_list.containsKey(args[0])) {
             pronounsData.setPronouns(player, args[0]);
             text = new StringBuilder("Your pronouns are now set to " + pronoun_list.get(args[0]));
         } else {
@@ -136,6 +134,6 @@ public class LPPronouns {
                 text.append("\n").append(entry.getKey()).append(": ").append(entry.getValue());
             }
         }
-        return text.toString();
+        return "§a" + text;
     }
 }

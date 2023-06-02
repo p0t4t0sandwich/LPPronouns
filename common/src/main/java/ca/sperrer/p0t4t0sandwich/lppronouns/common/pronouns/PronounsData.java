@@ -2,21 +2,26 @@ package ca.sperrer.p0t4t0sandwich.lppronouns.common.pronouns;
 
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.PlayerInstance;
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.storage.Database;
-import dev.dejvokep.boostedyaml.YamlDocument;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.node.types.SuffixNode;
 
+import java.util.HashMap;
 import java.util.UUID;
 
 public abstract class PronounsData {
     final Database db;
-    private LuckPerms luckPerms;
-    private YamlDocument config;
+    private final LuckPerms luckPerms;
+    private final HashMap<String, String> pronounsConfig;
 
-    public PronounsData(Database database, YamlDocument config) {
+    /**
+     * Constructor for the PronounsData class
+     * @param database The database
+     * @param pronounsConfig The pronouns config
+     */
+    public PronounsData(Database database, HashMap<String, String> pronounsConfig) {
         this.db = database;
-        this.config = config;
+        this.pronounsConfig = pronounsConfig;
         this.luckPerms = LuckPermsProvider.get();
     }
 
@@ -52,12 +57,14 @@ public abstract class PronounsData {
         this.dbSetPronouns(player, pronouns);
         UUID playerUuid = player.getUUID();
 
-        // Get mapped pronouns from config
-        String mapped_pronouns = config.getString("pronouns." + pronouns);
+        if (!pronouns.isEmpty()) {
+            // Get mapped pronouns from config
+            String mapped_pronouns = pronounsConfig.getOrDefault(pronouns, "");
 
-        // Update the player's suffix in LuckPerms
-        SuffixNode node = SuffixNode.builder(mapped_pronouns, 1).build();
-        luckPerms.getUserManager().modifyUser(playerUuid, user -> user.data().add(node));
+            // Update the player's suffix in LuckPerms
+            SuffixNode node = SuffixNode.builder(mapped_pronouns, 1).build();
+            luckPerms.getUserManager().modifyUser(playerUuid, user -> user.data().add(node));
+        }
     }
 
     /**
@@ -69,9 +76,9 @@ public abstract class PronounsData {
 
         // Get the player's pronouns from the database
         String pronouns = getPronouns(player);
-        String mapped_pronouns = config.getString("pronouns." + pronouns);
+        String mapped_pronouns = pronounsConfig.getOrDefault(pronouns, "");
 
-        if (mapped_pronouns != null && !mapped_pronouns.isEmpty()) {
+        if (!mapped_pronouns.isEmpty()) {
             // Update the player's suffix in LuckPerms
             SuffixNode node = SuffixNode.builder(mapped_pronouns, 1).build();
             luckPerms.getUserManager().modifyUser(playerUuid, user -> user.data().remove(node));
@@ -90,9 +97,9 @@ public abstract class PronounsData {
         String pronouns = getPronouns(player);
 
         // Get mapped pronouns from config
-        String mapped_pronouns = config.getString("pronouns." + pronouns);
+        String mapped_pronouns = pronounsConfig.getOrDefault(pronouns, "");
 
-        if (mapped_pronouns != null && !mapped_pronouns.isEmpty()) {
+        if (!mapped_pronouns.isEmpty()) {
             // Update the player's suffix in LuckPerms
             SuffixNode node = SuffixNode.builder(mapped_pronouns, 1).build();
             luckPerms.getUserManager().modifyUser(player.getUUID(), user -> user.data().add(node));

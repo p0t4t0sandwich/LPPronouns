@@ -6,6 +6,7 @@ import ca.sperrer.p0t4t0sandwich.lppronouns.common.pronouns.PronounsData;
 import dev.dejvokep.boostedyaml.YamlDocument;
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 
 public class DataSource {
@@ -36,7 +37,7 @@ public class DataSource {
      * @param database The database
      * @return The pronouns data class
      */
-    public static PronounsData getPronounsData(Database database, YamlDocument config) {
+    public static PronounsData getPronounsData(Database database, HashMap<String, String> config) {
         try {
             switch (database.getType()) {
                 case "mysql":
