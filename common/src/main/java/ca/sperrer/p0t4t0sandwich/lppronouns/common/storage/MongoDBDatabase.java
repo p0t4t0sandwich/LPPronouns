@@ -20,7 +20,7 @@ public class MongoDBDatabase extends Database<MongoClient> {
         if (port == 0) {
             port = 27017;
         }
-        String URI = "mongodb://" + username + ":" + password + "@" + host + ":" + port + "/" + database;
+        String URI = "mongodb://" + username + ":" + password + "@" + host + ":" + port + "/" + database + "?authSource=admin";
         MongoClient mongoClient = MongoClients.create(URI);
 
         setConnection(mongoClient);
