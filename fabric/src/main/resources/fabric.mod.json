@@ -8,7 +8,7 @@
   "contact": {
     "repo": "https://github.com/p0t4t0sandwich/LPPronouns"
   },
-  "license": "All-Rights-Reserved",
+  "license": "GPL-3",
   "icon": "assets/LPPronouns/icon.png",
   "environment": "*",
   "entrypoints": {
