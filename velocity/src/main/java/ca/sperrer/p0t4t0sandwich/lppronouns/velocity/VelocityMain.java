@@ -13,7 +13,7 @@ import org.slf4j.Logger;
 @Plugin(
         id = "lppronouns",
         name = "LPPronouns",
-        version = "1.0.0"
+        version = "1.0.1"
 )
 public class VelocityMain {
     public LPPronouns LPPronouns;
@@ -52,7 +52,7 @@ public class VelocityMain {
         this.logger.info("LPPronouns is running on " + getServerType() + ".");
 
         // Start LPPronouns
-        LPPronouns = new LPPronouns("plugins", this.logger);
+        LPPronouns = new LPPronouns("plugins", getLogger());
         LPPronouns.start();
 
         // Register event listener

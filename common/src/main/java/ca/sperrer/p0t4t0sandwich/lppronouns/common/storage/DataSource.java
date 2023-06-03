@@ -48,7 +48,8 @@ public class DataSource {
                     return null;
                 }
         } catch (Exception e) {
-            System.err.println(Arrays.toString(e.getStackTrace()));
+            System.err.println(e);
+            e.printStackTrace();
             return null;
         }
     }

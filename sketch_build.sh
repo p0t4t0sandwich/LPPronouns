@@ -1,8 +1,9 @@
 #!/bin/bash
 
-VERSION=1.0.0
+VERSION=1.0.1
 MC_VERSION=1.19.4
 PROJ_NAME=lppronouns
+OUT_FILE=LPPronouns-$VERSION-$MC_VERSION.jar
 
 # Make directories
 rm -rf ./temp_build
@@ -68,4 +69,4 @@ cd ./$PROJ_NAME
 zip -r ./$PROJ_NAME.zip ./*
 
 # Rename Jar
-mv ./$PROJ_NAME.zip ../../build/libs/LPPronouns-$VERSION-$MC_VERSION.jar
+mv ./$PROJ_NAME.zip ../../build/libs/$OUT_FILE

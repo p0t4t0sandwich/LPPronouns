@@ -10,7 +10,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'LuckPermsPronouns'
+rootProject.name = 'LPPronouns'
 
 include(
         'bukkit',

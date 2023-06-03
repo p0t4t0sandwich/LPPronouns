@@ -31,7 +31,8 @@ shadowJar {
     relocate 'dev.dejvokep', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.dejvokep'
     relocate 'com.zaxxer.hikari', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.hikari'
     relocate 'com.mysql', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.mysql'
-    relocate 'org.mongodb', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.mongodb'
+    relocate 'com.mongodb', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.mongodb'
+    relocate 'org.bson', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.bson'
 }
 
 artifacts {

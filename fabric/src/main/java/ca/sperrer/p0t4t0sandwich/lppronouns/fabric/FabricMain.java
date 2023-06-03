@@ -1,8 +1,11 @@
 package ca.sperrer.p0t4t0sandwich.lppronouns.fabric;
 
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.LPPronouns;
+import ca.sperrer.p0t4t0sandwich.lppronouns.fabric.commands.PronounsCommand;
 import ca.sperrer.p0t4t0sandwich.lppronouns.fabric.listeners.FabricEventListener;
 import net.fabricmc.api.DedicatedServerModInitializer;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,14 +34,12 @@ public class FabricMain implements DedicatedServerModInitializer {
 
         logger.info("[LPPronouns]: LPPronouns is running on " + getServerType() + ".");
 
-        // Start LPPronouns
-        LPPronouns = new LPPronouns("config", logger);
-        LPPronouns.start();
-
         // Register event listeners
+        ServerLifecycleEvents.SERVER_STARTED.register(new FabricEventListener());
         ServerPlayConnectionEvents.JOIN.register(new FabricEventListener());
 
         // Register commands
+        CommandRegistrationCallback.EVENT.register(PronounsCommand::register);
 
         // Mod enable message
         logger.info("[LPPronouns]: LPPronouns has been enabled!");

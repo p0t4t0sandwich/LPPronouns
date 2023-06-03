@@ -57,9 +57,7 @@ pronouns:
 - [ ] add sqlite support
 - [ ] add h2 support
 - [ ] add filestorage support
-- [ ] Add support for more storage types
-- [ ] Add Forge command
-- [ ] Add Fabric command
+- [ ] Fix weird Forge errors in log
 - [ ] Add command permissions
 - [ ] Add tab completion? -- API dependent
 - [ ] Add table prefix option in config
