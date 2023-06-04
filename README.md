@@ -8,13 +8,11 @@ Link to our support: [Discord](https://discord.gg/jec2jpdj7A)
 
 ## Download
 
-GitHub: [Releases](https://github.com/p0t4t0sandwich/LPPronouns/releases)
-
-Spigot: [LPPronouns](https://www.spigotmc.org/resources/lppronouns.110206/)
-
-Hangar: [LPPronouns](https://hangar.papermc.io/p0t4t0sandwich/LPPronouns)
-
-Modrinth: [LPPronouns](https://modrinth.com/plugin/lppronouns)
+- [GitHub](https://github.com/p0t4t0sandwich/LPPronouns/releases)
+- [Spigot](https://www.spigotmc.org/resources/lppronouns.110206/)
+- [Hangar](https://hangar.papermc.io/p0t4t0sandwich/LPPronouns)
+- [Modrinth](https://modrinth.com/plugin/lppronouns)
+- [CurseForge](https://legacy.curseforge.com/minecraft/mc-mods/lppronouns)
 
 ## Dependencies
 
