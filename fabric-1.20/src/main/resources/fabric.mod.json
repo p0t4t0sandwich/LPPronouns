@@ -3,7 +3,7 @@
   "id": "lppronouns",
   "version": "${version}",
   "name": "LPPronouns",
-  "description": "",
+  "description": "A simple, cross API plugin that allows players to set their pronouns.",
   "authors": ["p0t4t0sandwich"],
   "contact": {
     "repo": "https://github.com/p0t4t0sandwich/LPPronouns"

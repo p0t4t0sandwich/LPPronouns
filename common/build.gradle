@@ -23,8 +23,6 @@ dependencies {
 }
 
 shadowJar {
-//    classifier = ''
-//    configurations = [project.configurations.runtimeClasspath, project.configurations.shadow]
     dependencies {
         include(dependency("dev.dejvokep:boosted-yaml:1.3"))
         include(dependency("com.zaxxer:HikariCP:4.0.3"))

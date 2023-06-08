@@ -17,12 +17,12 @@ sourceCompatibility = 1.8
 targetCompatibility = 17
 
 minecraft {
-    mappings channel: 'official', version: minecraftVersion
+    mappings(channel: 'official', version: minecraftVersion)
 }
 
 dependencies {
     implementation(project(path: ':common', configuration: 'shadow'))
-    minecraft "net.minecraftforge:forge:${minecraftVersion}-${forgeVersion}"
+    minecraft("net.minecraftforge:forge:${minecraftVersion}-${forgeVersion}")
 }
 
 reobf {
