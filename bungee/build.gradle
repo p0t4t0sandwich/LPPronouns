@@ -5,17 +5,12 @@ plugins {
 dependencies {
     implementation(project(":common"))
 
-    compileOnly 'net.md-5:bungeecord-api:1.19-R0.1-SNAPSHOT'
+    // BungeeCord
+    compileOnly 'net.md-5:bungeecord-api:1.20-R0.1-SNAPSHOT'
 }
 
-java.disableAutoTargetJvm()
-
-shadowJar {
-    classifier = ''
-    dependencies {
-        include(project(":common"))
-    }
-    relocate 'com.google.gson', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.gson'
+jar {
+    classifier = 'unshaded'
 }
 
 processResources {
@@ -25,6 +20,20 @@ processResources {
     filesMatching('bungee.yml') {
         expand props
     }
+}
+
+shadowJar {
+    dependencies {
+        include(project(":common"))
+    }
+
+    destinationDir = file('../target')
+    archiveName = "LPPronouns-${version}-bungee.jar"
+    classifier = ''
+}
+shadowJar.doLast {
+    task ->
+        ant.checksum file: task.archivePath
 }
 
 artifacts {

@@ -15,8 +15,10 @@ rootProject.name = 'LPPronouns'
 include(
         'bukkit',
         'bungee',
-        'fabric',
-        'forge',
+        'fabric-1.19.4',
+        'fabric-1.20',
+        'forge-1.19.4',
+        'forge-1.20',
         'velocity',
         'common'
 )

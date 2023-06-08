@@ -3,22 +3,28 @@ plugins {
 }
 
 dependencies {
-    // General dependencies
+    // YAML
     implementation("dev.dejvokep:boosted-yaml:1.3")
+
+    // MySQL
     implementation("com.zaxxer:HikariCP:4.0.3")
     implementation("mysql:mysql-connector-java:8.0.26")
+
+    // MongoDB
     implementation('org.mongodb:mongodb-driver-sync:4.9.1')
     implementation('org.mongodb:mongodb-driver-core:4.9.1')
     implementation('org.mongodb:bson:4.9.1')
 
+    // LuckPerms
     compileOnly("net.luckperms:api:5.4")
 
+    // Logging
     compileOnly('org.slf4j:slf4j-api:2.0.5')
 }
 
 shadowJar {
-    classifier = ''
-    configurations = [project.configurations.runtimeClasspath, project.configurations.shadow]
+//    classifier = ''
+//    configurations = [project.configurations.runtimeClasspath, project.configurations.shadow]
     dependencies {
         include(dependency("dev.dejvokep:boosted-yaml:1.3"))
         include(dependency("com.zaxxer:HikariCP:4.0.3"))
@@ -27,12 +33,19 @@ shadowJar {
         include(dependency('org.mongodb:mongodb-driver-core:4.9.1'))
         include(dependency('org.mongodb:bson:4.9.1'))
     }
+    relocate('dev.dejvokep', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.dejvokep')
+    relocate('com.zaxxer.hikari', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.hikari')
+    relocate('com.mysql', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.mysql')
+    relocate('com.mongodb', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.mongodb')
+    relocate('org.bson', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.bson')
 
-    relocate 'dev.dejvokep', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.dejvokep'
-    relocate 'com.zaxxer.hikari', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.hikari'
-    relocate 'com.mysql', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.mysql'
-    relocate 'com.mongodb', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.mongodb'
-    relocate 'org.bson', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.bson'
+    destinationDir = file('../target')
+    archiveName = "LPPronouns-${version}-common.jar"
+    classifier = ''
+}
+shadowJar.doLast {
+    task ->
+        ant.checksum file: task.archivePath
 }
 
 artifacts {

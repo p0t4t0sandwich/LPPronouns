@@ -30,11 +30,18 @@ reobf {
 }
 
 shadowJar {
-    classifier = ''
     dependencies {
         include(project(':common'))
     }
-    relocate 'com.google.gson', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.gson'
+    relocate('com.google.gson', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.gson')
+
+    destinationDir = file('../target')
+    archiveName = "LPPronouns-${version}-forge-${minecraftVersion}.jar"
+    classifier = ''
+}
+shadowJar.doLast {
+    task ->
+        ant.checksum file: task.archivePath
 }
 
 artifacts {

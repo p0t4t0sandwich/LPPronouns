@@ -6,24 +6,10 @@ dependencies {
     implementation(project(":common"))
 
     // Spigot
-    compileOnly "org.spigotmc:spigot-api:1.19.4-R0.1-SNAPSHOT"
-
-    // Folia
-//    compileOnly "dev.folia:folia-api:1.19.4-R0.1-SNAPSHOT"
-
-    // Paper
-//    compileOnly "io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT"
+    compileOnly "org.spigotmc:spigot-api:1.20-R0.1-SNAPSHOT"
 }
 
 java.disableAutoTargetJvm()
-
-shadowJar {
-    classifier = ''
-
-    dependencies {
-        include(project(":common"))
-    }
-}
 
 processResources {
     def props = [version: version]
@@ -32,6 +18,20 @@ processResources {
     filesMatching('plugin.yml') {
         expand props
     }
+}
+
+shadowJar {
+    dependencies {
+        include(project(":common"))
+    }
+
+    destinationDir = file('../target')
+    archiveName = "LPPronouns-${version}-bukkit.jar"
+    classifier = ''
+}
+shadowJar.doLast {
+    task ->
+        ant.checksum file: task.archivePath
 }
 
 artifacts {

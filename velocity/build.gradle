@@ -1,5 +1,5 @@
 plugins {
-    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id('com.github.johnrengelman.shadow') version('7.1.2')
 }
 
 repositories {
@@ -9,16 +9,22 @@ repositories {
 dependencies {
     implementation(project(":common"))
 
-    compileOnly 'com.velocitypowered:velocity-api:3.1.1'
-    annotationProcessor 'com.velocitypowered:velocity-api:3.1.1'
+    compileOnly('com.velocitypowered:velocity-api:3.1.1')
+    annotationProcessor('com.velocitypowered:velocity-api:3.1.1')
 }
 
 shadowJar {
-    classifier = ''
-
     dependencies {
         include(project(":common"))
     }
+
+    destinationDir = file('../target')
+    archiveName = "LPPronouns-${version}-velocity.jar"
+    classifier = ''
+}
+shadowJar.doLast {
+    task ->
+        ant.checksum file: task.archivePath
 }
 
 artifacts {
