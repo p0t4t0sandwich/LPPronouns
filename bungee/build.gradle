@@ -1,24 +1,20 @@
 plugins {
-    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id('com.github.johnrengelman.shadow') version('7.1.2')
 }
 
 dependencies {
     implementation(project(":common"))
 
     // BungeeCord
-    compileOnly 'net.md-5:bungeecord-api:1.20-R0.1-SNAPSHOT'
-}
-
-jar {
-    classifier = 'unshaded'
+    compileOnly('net.md-5:bungeecord-api:1.20-R0.1-SNAPSHOT')
 }
 
 processResources {
     def props = [version: version]
-    inputs.properties props
-    filteringCharset 'UTF-8'
+    inputs.properties(props)
+    filteringCharset('UTF-8')
     filesMatching('bungee.yml') {
-        expand props
+        expand(props)
     }
 }
 
@@ -27,15 +23,18 @@ shadowJar {
         include(project(":common"))
     }
 
-    destinationDir = file('../target')
-    archiveName = "LPPronouns-${version}-bungee.jar"
-    classifier = ''
+    destinationDir(file('../target'))
+    archiveName("LPPronouns-${version}-bungee.jar")
+    classifier('')
 }
 shadowJar.doLast {
     task ->
-        ant.checksum file: task.archivePath
+        ant.checksum(file: task.archivePath) {
+            hashAlgorithm = 'md5'
+            property = 'md5sum'
+        }
 }
 
 artifacts {
-    archives shadowJar
+    archives(shadowJar)
 }

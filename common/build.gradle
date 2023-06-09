@@ -1,5 +1,5 @@
 plugins {
-    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id('com.github.johnrengelman.shadow') version('7.1.2')
 }
 
 dependencies {
@@ -37,15 +37,18 @@ shadowJar {
     relocate('com.mongodb', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.mongodb')
     relocate('org.bson', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.bson')
 
-    destinationDir = file('../target')
-    archiveName = "LPPronouns-${version}-common.jar"
-    classifier = ''
+    destinationDir(file('../target'))
+    archiveName("LPPronouns-${version}-common.jar")
+    classifier('')
 }
 shadowJar.doLast {
     task ->
-        ant.checksum file: task.archivePath
+        ant.checksum(file: task.archivePath) {
+            hashAlgorithm = 'md5'
+            property = 'md5sum'
+        }
 }
 
 artifacts {
-    archives shadowJar
+    archives(shadowJar)
 }

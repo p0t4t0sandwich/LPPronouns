@@ -14,7 +14,7 @@ public class PronounsCommand implements SimpleCommand {
 
     @Override
     public void execute(Invocation invocation) {
-        runTaskAsync(() -> {
+//        runTaskAsync(() -> { // TODO: Figure out why it just doesn't work async
             try {
                 // Check if sender is a player
                 if ((invocation.source() instanceof Player)) {
@@ -23,10 +23,13 @@ public class PronounsCommand implements SimpleCommand {
                     String text = plugin.LPPronouns.commandHandler(mapPlayer(player), invocation.arguments());
 
                     player.sendMessage(Component.text(text).color(GREEN));
+                } else {
+                    plugin.getLogger().info("§cYou must be a player to use this command.");
                 }
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                System.out.println(e);
+                e.printStackTrace();
             }
-        });
+//        });
     }
 }
