@@ -1,5 +1,6 @@
 package ca.sperrer.p0t4t0sandwich.lppronouns.common;
 
+import ca.sperrer.p0t4t0sandwich.lppronouns.api.*;
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.storage.DataSource;
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.storage.Database;
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.pronouns.PronounsData;
@@ -79,6 +80,9 @@ public class LPPronouns {
             return;
         }
         STARTED = true;
+
+        // Set API instance
+        LPPronounsProvider.register((ca.sperrer.p0t4t0sandwich.lppronouns.api.LPPronouns) this);
 
         String type = config.getString("storage.type");
         database = DataSource.getDatabase(type, config);

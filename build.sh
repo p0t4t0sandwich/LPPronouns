@@ -167,4 +167,5 @@ mv ./$OUT_FILE.jar ../$OUT_FILE.jar
 mv ./$OUT_FILE.jar.MD5 ../$OUT_FILE.jar.MD5
 
 # --------------------------- Cleanup --------------------------------
-rm -rf ./target/temp_build
+cd ../
+rm -rf temp_build

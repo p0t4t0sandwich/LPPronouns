@@ -1,0 +1,42 @@
+---
+version: 1
+
+# Database configuration
+# Supported storage types: mongodb, mysql
+storage:
+  type: mongodb
+  config:
+    host: localhost
+    port: 27017
+    database: playerdata
+    username: root
+    password: password
+
+# Pronoun configuration
+pronouns:
+  none: ""
+
+  any: "any"
+  other: "other"
+  ask: "ask"
+  avoid: "avoid"
+
+  hh: "he/him"
+  hi: "he/it"
+  hs: "he/she"
+  ht: "he/they"
+
+  ih: "it/him"
+  ii: "it/its"
+  is: "it/she"
+  it: "it/they"
+
+  shh: "she/he"
+  sh: "she/her"
+  si: "she/it"
+  st: "she/they"
+
+  th: "they/he"
+  ti: "they/it"
+  ts: "they/she"
+  tt: "they/them"

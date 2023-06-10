@@ -3,8 +3,6 @@ plugins {
 }
 
 dependencies {
-    implementation(project(':api'))
-
     // YAML
     implementation("dev.dejvokep:boosted-yaml:1.3")
 
@@ -26,7 +24,6 @@ dependencies {
 
 shadowJar {
     dependencies {
-        include(project(':api'))
         include(dependency("dev.dejvokep:boosted-yaml:1.3"))
         include(dependency("com.zaxxer:HikariCP:4.0.3"))
         include(dependency("mysql:mysql-connector-java:8.0.26"))
@@ -41,7 +38,7 @@ shadowJar {
     relocate('org.bson', 'ca.sperrer.p0t4t0sandwich.lppronouns.lib.bson')
 
     destinationDir(file('../target'))
-    archiveName("LPPronouns-${version}-common.jar")
+    archiveName("LPPronouns-${version}-api.jar")
     classifier('')
 }
 shadowJar.doLast {
