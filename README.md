@@ -67,16 +67,16 @@ pronouns:
 
 ## TODO
 
-- [ ] Improve MySQL support
-- [ ] add sqlite support
-- [ ] add h2 support
-- [ ] add filestorage support
-- [ ] Fix weird Forge errors in log
-- [ ] Add command permissions
-  - [ ] Forge
-  - [ ] Fabric
-- [ ] Add tab completion? -- API dependent
-- [ ] Add table prefix option in config
-- [ ] Figure out why velocity can't run the command async
-- [ ] Sponge support? API 7/8
-- [ ] Nukkit support?
+- Improve MySQL support
+- add sqlite support
+- add h2 support
+- add filestorage support
+- Fix weird Forge errors in log
+- Add command permissions
+  - Forge
+  - Fabric
+- Add tab completion? -- API dependent
+- Add table prefix option in config
+- Figure out why velocity can't run the command async
+- Sponge support? API 7/8
+- Nukkit support?
