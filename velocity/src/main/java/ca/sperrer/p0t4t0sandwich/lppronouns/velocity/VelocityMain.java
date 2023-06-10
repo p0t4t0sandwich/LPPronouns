@@ -1,11 +1,12 @@
 package ca.sperrer.p0t4t0sandwich.lppronouns.velocity;
 
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.LPPronouns;
-import ca.sperrer.p0t4t0sandwich.lppronouns.velocity.commands.PronounsCommand;
-import ca.sperrer.p0t4t0sandwich.lppronouns.velocity.listeners.VelocityEventListener;
+import ca.sperrer.p0t4t0sandwich.lppronouns.velocity.commands.VelocityPronounsCommand;
+import ca.sperrer.p0t4t0sandwich.lppronouns.velocity.listeners.VelocityPlayerLoginListener;
 import com.google.inject.Inject;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
+import com.velocitypowered.api.plugin.Dependency;
 import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.proxy.ProxyServer;
 import org.slf4j.Logger;
@@ -13,7 +14,13 @@ import org.slf4j.Logger;
 @Plugin(
         id = "lppronouns",
         name = "LPPronouns",
-        version = "1.0.1"
+        version = "1.0.1",
+        authors = "p0t4t0sandwich",
+        description = "A simple, cross API plugin that allows players to set their pronouns.",
+        url = "https://github.com/p0t4t0sandwich/LPPronouns",
+        dependencies = {
+                @Dependency(id = "luckperms")
+        }
 )
 public class VelocityMain {
     public LPPronouns LPPronouns;
@@ -56,10 +63,10 @@ public class VelocityMain {
         LPPronouns.start();
 
         // Register event listener
-        server.getEventManager().register(this, new VelocityEventListener());
+        server.getEventManager().register(this, new VelocityPlayerLoginListener());
 
         // Register commands
-        server.getCommandManager().register("pronouns", new PronounsCommand());
+        server.getCommandManager().register("pronouns", new VelocityPronounsCommand());
 
         // Plugin enable message
         this.logger.info("LPPronouns has been enabled!");

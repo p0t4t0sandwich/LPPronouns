@@ -1,8 +1,9 @@
 package ca.sperrer.p0t4t0sandwich.lppronouns.forge;
 
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.LPPronouns;
-import ca.sperrer.p0t4t0sandwich.lppronouns.forge.commands.PronounsCommand;
-import ca.sperrer.p0t4t0sandwich.lppronouns.forge.listeners.ForgeEventListener;
+import ca.sperrer.p0t4t0sandwich.lppronouns.forge.commands.ForgePronounsCommand;
+import ca.sperrer.p0t4t0sandwich.lppronouns.forge.listeners.ForgePlayerLoginListener;
+import ca.sperrer.p0t4t0sandwich.lppronouns.forge.listeners.ForgeServerStartedListener;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -33,11 +34,12 @@ public class ForgeMain {
 
         logger.info("[LPPronouns]: LPPronouns is running on " + getServerType() + ".");
 
-        // Register event listener
-        MinecraftForge.EVENT_BUS.register(new ForgeEventListener());
+        // Register event listeners
+        MinecraftForge.EVENT_BUS.register(new ForgeServerStartedListener());
+        MinecraftForge.EVENT_BUS.register(new ForgePlayerLoginListener());
 
         // Register commands
-        MinecraftForge.EVENT_BUS.register(PronounsCommand.class);
+        MinecraftForge.EVENT_BUS.register(ForgePronounsCommand.class);
 
         // Mod enable message
         logger.info("[LPPronouns]: LPPronouns has been enabled!");

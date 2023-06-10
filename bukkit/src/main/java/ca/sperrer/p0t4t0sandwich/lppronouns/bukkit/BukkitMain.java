@@ -1,7 +1,7 @@
 package ca.sperrer.p0t4t0sandwich.lppronouns.bukkit;
 
-import ca.sperrer.p0t4t0sandwich.lppronouns.bukkit.commands.PronounsCommand;
-import ca.sperrer.p0t4t0sandwich.lppronouns.bukkit.listeners.BukkitEventListener;
+import ca.sperrer.p0t4t0sandwich.lppronouns.bukkit.commands.BukkitPronounsCommand;
+import ca.sperrer.p0t4t0sandwich.lppronouns.bukkit.listeners.BukkitPlayerLoginListener;
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.LPPronouns;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -42,10 +42,10 @@ public class BukkitMain extends JavaPlugin {
         LPPronouns.start();
 
         // Register event listener
-        getServer().getPluginManager().registerEvents(new BukkitEventListener(), this);
+        getServer().getPluginManager().registerEvents(new BukkitPlayerLoginListener(), this);
 
         // Register commands
-        getCommand("pronouns").setExecutor(new PronounsCommand());
+        getCommand("pronouns").setExecutor(new BukkitPronounsCommand());
 
         // Plugin enable message
         getLogger().info("LPPronouns has been enabled!");

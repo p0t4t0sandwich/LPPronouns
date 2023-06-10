@@ -7,13 +7,14 @@ import com.velocitypowered.api.event.connection.LoginEvent;
 import static ca.sperrer.p0t4t0sandwich.lppronouns.common.Utils.runTaskAsync;
 import static ca.sperrer.p0t4t0sandwich.lppronouns.velocity.VelocityUtils.mapPlayer;
 
-public class VelocityEventListener {
+public class VelocityPlayerLoginListener {
     VelocityMain plugin = VelocityMain.getInstance();
 
     @Subscribe
     public void onPlayerLogin(LoginEvent event) {
         runTaskAsync(() -> {
             try {
+                // Refresh pronouns
                 plugin.LPPronouns.pronounsData.refreshPronouns(mapPlayer(event.getPlayer()));
             } catch (Exception e) {
                 System.out.println(e);

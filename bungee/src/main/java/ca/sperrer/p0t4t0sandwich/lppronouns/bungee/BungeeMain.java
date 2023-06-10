@@ -1,7 +1,7 @@
 package ca.sperrer.p0t4t0sandwich.lppronouns.bungee;
 
-import ca.sperrer.p0t4t0sandwich.lppronouns.bungee.commands.PronounsCommand;
-import ca.sperrer.p0t4t0sandwich.lppronouns.bungee.listeners.BungeeEventListener;
+import ca.sperrer.p0t4t0sandwich.lppronouns.bungee.commands.BungeePronounsCommand;
+import ca.sperrer.p0t4t0sandwich.lppronouns.bungee.listeners.BungeePlayerLoginListener;
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.LPPronouns;
 import net.md_5.bungee.api.plugin.Plugin;
 
@@ -30,10 +30,10 @@ public class BungeeMain extends Plugin {
         LPPronouns.start();
 
         // Register event listener
-        getProxy().getPluginManager().registerListener(this, new BungeeEventListener());
+        getProxy().getPluginManager().registerListener(this, new BungeePlayerLoginListener());
 
         // Register commands
-        getProxy().getPluginManager().registerCommand(this, new PronounsCommand());
+        getProxy().getPluginManager().registerCommand(this, new BungeePronounsCommand());
 
         // Plugin enable message
         getLogger().info("LPPronouns has been enabled!");

@@ -61,3 +61,6 @@ pronouns:
 - [ ] Add table prefix option in config
 - [ ] Include a proper check for LuckPerms, gracefully disable if not found
 - [ ] Figure out why velocity can't run the command async
+- [ ] Create a proper API
+- [ ] Sponge support? API 7/8
+- [ ] Nukkit support?

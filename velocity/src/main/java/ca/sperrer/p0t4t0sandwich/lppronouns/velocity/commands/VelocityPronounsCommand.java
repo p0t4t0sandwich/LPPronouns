@@ -5,11 +5,10 @@ import com.velocitypowered.api.command.SimpleCommand;
 import com.velocitypowered.api.proxy.Player;
 import net.kyori.adventure.text.Component;
 
-import static ca.sperrer.p0t4t0sandwich.lppronouns.common.Utils.runTaskAsync;
 import static ca.sperrer.p0t4t0sandwich.lppronouns.velocity.VelocityUtils.mapPlayer;
 import static net.kyori.adventure.text.format.NamedTextColor.GREEN;
 
-public class PronounsCommand implements SimpleCommand {
+public class VelocityPronounsCommand implements SimpleCommand {
     private final VelocityMain plugin = VelocityMain.getInstance();
 
     @Override

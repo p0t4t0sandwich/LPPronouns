@@ -1,8 +1,9 @@
 package ca.sperrer.p0t4t0sandwich.lppronouns.fabric;
 
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.LPPronouns;
-import ca.sperrer.p0t4t0sandwich.lppronouns.fabric.commands.PronounsCommand;
-import ca.sperrer.p0t4t0sandwich.lppronouns.fabric.listeners.FabricEventListener;
+import ca.sperrer.p0t4t0sandwich.lppronouns.fabric.commands.FabricPronounsCommand;
+import ca.sperrer.p0t4t0sandwich.lppronouns.fabric.listeners.FabricPlayerLoginListener;
+import ca.sperrer.p0t4t0sandwich.lppronouns.fabric.listeners.FabricServerStartedListener;
 import net.fabricmc.api.DedicatedServerModInitializer;
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
@@ -35,11 +36,11 @@ public class FabricMain implements DedicatedServerModInitializer {
         logger.info("[LPPronouns]: LPPronouns is running on " + getServerType() + ".");
 
         // Register event listeners
-        ServerLifecycleEvents.SERVER_STARTED.register(new FabricEventListener());
-        ServerPlayConnectionEvents.JOIN.register(new FabricEventListener());
+        ServerLifecycleEvents.SERVER_STARTED.register(new FabricServerStartedListener());
+        ServerPlayConnectionEvents.JOIN.register(new FabricPlayerLoginListener());
 
         // Register commands
-        CommandRegistrationCallback.EVENT.register(PronounsCommand::register);
+        CommandRegistrationCallback.EVENT.register(FabricPronounsCommand::register);
 
         // Mod enable message
         logger.info("[LPPronouns]: LPPronouns has been enabled!");

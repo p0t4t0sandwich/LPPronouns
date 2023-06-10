@@ -8,16 +8,18 @@ import net.md_5.bungee.event.EventHandler;
 import static ca.sperrer.p0t4t0sandwich.lppronouns.bungee.BungeeUtils.mapPlayer;
 import static ca.sperrer.p0t4t0sandwich.lppronouns.common.Utils.runTaskAsync;
 
-public class BungeeEventListener implements Listener {
+public class BungeePlayerLoginListener implements Listener {
     BungeeMain plugin = BungeeMain.getInstance();
 
     @EventHandler
     public void onPostLogin(PostLoginEvent event) {
         runTaskAsync(() -> {
             try {
+                // Refresh pronouns
                 plugin.LPPronouns.pronounsData.refreshPronouns(mapPlayer(event.getPlayer()));
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                System.out.println(e);
+                e.printStackTrace();
             }
         });
     }

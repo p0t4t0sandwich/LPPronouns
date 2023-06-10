@@ -15,7 +15,7 @@ import static net.minecraft.commands.Commands.argument;
 import static net.minecraft.commands.Commands.literal;
 
 
-public final class PronounsCommand {
+public final class ForgePronounsCommand {
     private static final ForgeMain mod = ForgeMain.getInstance();
 
     @SubscribeEvent

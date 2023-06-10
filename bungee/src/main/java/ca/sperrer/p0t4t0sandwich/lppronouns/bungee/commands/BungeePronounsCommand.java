@@ -1,7 +1,6 @@
 package ca.sperrer.p0t4t0sandwich.lppronouns.bungee.commands;
 
 import ca.sperrer.p0t4t0sandwich.lppronouns.bungee.BungeeMain;
-import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
@@ -10,10 +9,10 @@ import net.md_5.bungee.api.plugin.Command;
 import static ca.sperrer.p0t4t0sandwich.lppronouns.bungee.BungeeUtils.mapPlayer;
 import static ca.sperrer.p0t4t0sandwich.lppronouns.common.Utils.runTaskAsync;
 
-public class PronounsCommand extends Command {
+public class BungeePronounsCommand extends Command {
     private final BungeeMain plugin = BungeeMain.getInstance();
 
-    public PronounsCommand() {
+    public BungeePronounsCommand() {
         super("pronouns");
     }
 
@@ -33,6 +32,7 @@ public class PronounsCommand extends Command {
                 }
             } catch (Exception e) {
                 System.err.println(e);
+                e.printStackTrace();
             }
         });
     }

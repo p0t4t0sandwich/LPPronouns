@@ -2,7 +2,7 @@
 
 PROJ_ID=lppronouns
 PROJ_NAME=LPPronouns
-VERSION=1.0.1
+VERSION=1.0.2
 
 # Make directories
 mkdir -p ./target/temp_build
@@ -10,91 +10,161 @@ cd ./target/temp_build
 
 mkdir -p ./$PROJ_NAME-all/ca/sperrer/p0t4t0sandwich/$PROJ_ID
 
-# Common among all builds
+# --------------------------- Prepare Common --------------------------------
 
 # Prepare bukkit files
 cp ../$PROJ_NAME-$VERSION-bukkit.jar ./
 mv ./$PROJ_NAME-$VERSION-bukkit.jar ./$PROJ_NAME-$VERSION-bukkit.zip
 unzip ./$PROJ_NAME-$VERSION-bukkit.zip -d ./bukkit
+rm -rf ./$PROJ_NAME-$VERSION-bukkit.zip
 
 # Copy bukkit files
 mv ./bukkit/ca/sperrer/p0t4t0sandwich/$PROJ_ID/bukkit ./$PROJ_NAME-all/ca/sperrer/p0t4t0sandwich/$PROJ_ID
 cp ./bukkit/plugin.yml ./$PROJ_NAME-all
-rm -rf ./bukkit ./$PROJ_NAME-$VERSION-bukkit.zip
+rm -rf ./bukkit
 
 # Prepare bungee files
 cp ../$PROJ_NAME-$VERSION-bungee.jar ./
 mv ./$PROJ_NAME-$VERSION-bungee.jar ./$PROJ_NAME-$VERSION-bungee.zip
 unzip ./$PROJ_NAME-$VERSION-bungee.zip -d ./bungee
+rm -rf ./$PROJ_NAME-$VERSION-bungee.zip
 
 # Copy bungee files
 mv ./bungee/ca/sperrer/p0t4t0sandwich/$PROJ_ID/bungee ./$PROJ_NAME-all/ca/sperrer/p0t4t0sandwich/$PROJ_ID
 cp ./bungee/bungee.yml ./$PROJ_NAME-all
-rm -rf ./bungee ./$PROJ_NAME-$VERSION-bungee.zip
+rm -rf ./bungee
 
 # Prepare velocity files
 cp ../$PROJ_NAME-$VERSION-velocity.jar ./
 mv ./$PROJ_NAME-$VERSION-velocity.jar ./$PROJ_NAME-$VERSION-velocity.zip
 unzip ./$PROJ_NAME-$VERSION-velocity.zip -d ./velocity
+rm -rf ./$PROJ_NAME-$VERSION-velocity.zip
 
 # Copy velocity files
 mv ./velocity/ca/sperrer/p0t4t0sandwich/$PROJ_ID/velocity ./$PROJ_NAME-all/ca/sperrer/p0t4t0sandwich/$PROJ_ID
 cp ./velocity/velocity.yml ./$PROJ_NAME-all/ca/sperrer/p0t4t0sandwich/$PROJ_ID
 cp ./velocity/velocity-plugin.json ./$PROJ_NAME-all
-rm -rf ./velocity ./$PROJ_NAME-$VERSION-velocity.zip
+rm -rf ./velocity
 
 # Prepare common files
 cp ../$PROJ_NAME-$VERSION-common.jar ./
 mv ./$PROJ_NAME-$VERSION-common.jar ./$PROJ_NAME-$VERSION-common.zip
 unzip ./$PROJ_NAME-$VERSION-common.zip -d ./common
+rm -rf ./$PROJ_NAME-$VERSION-common.zip
 
 # Copy common files
 mv ./common/ca/sperrer/p0t4t0sandwich/$PROJ_ID/common ./$PROJ_NAME-all/ca/sperrer/p0t4t0sandwich/$PROJ_ID
+mv ./common/ca/sperrer/p0t4t0sandwich/$PROJ_ID/lib ./$PROJ_NAME-all/ca/sperrer/p0t4t0sandwich/$PROJ_ID
+cp ./common/config.yml ./$PROJ_NAME-all
 cp ./common/LICENSE ./$PROJ_NAME-all
 cp ../../README.md ./$PROJ_NAME-all
-rm -rf ./common ./$PROJ_NAME-$VERSION-common.zip
+rm -rf ./common
 
-# ---------------------------
-#MC_VERSION=1.19.4
-#OUT_FILE=$PROJ_NAME-$VERSION-$MC_VERSION.jar
+# --------------------------- Prepare Forge and Fabric --------------------------------
 
-# Version specific
-#mkdir -p ./$PROJ_NAME-$VERSION-$MC_VERSION/ca/sperrer/p0t4t0sandwich/$PROJ_ID
+# Prepare Fabric 1.17 files
+FABRIC_VERSION=1.17
+cp ../$PROJ_NAME-$VERSION-fabric-$FABRIC_VERSION.jar ./
+mv ./$PROJ_NAME-$VERSION-fabric-$FABRIC_VERSION.jar ./$PROJ_NAME-$VERSION-fabric-$FABRIC_VERSION.zip
+unzip ./$PROJ_NAME-$VERSION-fabric-$FABRIC_VERSION.zip -d ./fabric-$FABRIC_VERSION
+rm -rf ./$PROJ_NAME-$VERSION-fabric-$FABRIC_VERSION.zip
 
-# Fabric and Forge
+# Prepare Fabric 1.20 files
+FABRIC_VERSION=1.20
+cp ../$PROJ_NAME-$VERSION-fabric-$FABRIC_VERSION.jar ./
+mv ./$PROJ_NAME-$VERSION-fabric-$FABRIC_VERSION.jar ./$PROJ_NAME-$VERSION-fabric-$FABRIC_VERSION.zip
+unzip ./$PROJ_NAME-$VERSION-fabric-$FABRIC_VERSION.zip -d ./fabric-$FABRIC_VERSION
+rm -rf ./$PROJ_NAME-$VERSION-fabric-$FABRIC_VERSION.zip
 
-# Prepare fabric files
-#cp ../$PROJ_NAME-$VERSION-fabric-$MC_VERSION.jar ./
-#mv ./$PROJ_NAME-$VERSION-fabric-$MC_VERSION.jar ./$PROJ_NAME-$VERSION-fabric-$MC_VERSION.zip
-#unzip ./$PROJ_NAME-$VERSION-fabric-$MC_VERSION.zip -d ./fabric-$MC_VERSION
+# Prepare Forge 1.19 files
+FORGE_VERSION=1.19
+cp ../$PROJ_NAME-$VERSION-forge-$FORGE_VERSION.jar ./
+mv ./$PROJ_NAME-$VERSION-forge-$FORGE_VERSION.jar ./$PROJ_NAME-$VERSION-forge-$FORGE_VERSION.zip
+unzip ./$PROJ_NAME-$VERSION-forge-$FORGE_VERSION.zip -d ./forge-$FORGE_VERSION
+rm -rf ./$PROJ_NAME-$VERSION-forge-$FORGE_VERSION.zip
+
+# Prepare Forge 1.20 files
+FORGE_VERSION=1.20
+cp ../$PROJ_NAME-$VERSION-forge-$FORGE_VERSION.jar ./
+mv ./$PROJ_NAME-$VERSION-forge-$FORGE_VERSION.jar ./$PROJ_NAME-$VERSION-forge-$FORGE_VERSION.zip
+unzip ./$PROJ_NAME-$VERSION-forge-$FORGE_VERSION.zip -d ./forge-$FORGE_VERSION
+rm -rf ./$PROJ_NAME-$VERSION-forge-$FORGE_VERSION.zip
+
+# --------------------------- Build 1.19 --------------------------------
+MC_VERSION=1.19
+FABRIC_VERSION=1.17
+FORGE_VERSION=1.19
+OUT_FILE=$PROJ_NAME-$VERSION-$MC_VERSION
+
+mkdir -p ./$OUT_FILE
+
+# Copy common files
+cp -r ./$PROJ_NAME-all/* ./$OUT_FILE/
 
 # Copy fabric files
-#mv ./fabric-$MC_VERSION/ca/sperrer/p0t4t0sandwich/$PROJ_ID/fabric ./$PROJ_NAME-$VERSION-$MC_VERSION/ca/sperrer/p0t4t0sandwich/$PROJ_ID/fabric
-#cp ./fabric-$MC_VERSION/fabric.mod.json ./$PROJ_NAME-$VERSION-$MC_VERSION
-#cp ./fabric-$MC_VERSION/$PROJ_NAME.mixins.json ./$PROJ_NAME-$VERSION-$MC_VERSION
-#cp -r ./fabric-$MC_VERSION/assets ./$PROJ_NAME-$VERSION-$MC_VERSION
-#rm -rf ./fabric-$MC_VERSION ./$PROJ_NAME-$VERSION-fabric-$MC_VERSION.zip
+cp -r ./fabric-$FABRIC_VERSION/ca/sperrer/p0t4t0sandwich/$PROJ_ID/fabric ./$OUT_FILE/ca/sperrer/p0t4t0sandwich/$PROJ_ID
+cp ./fabric-$FABRIC_VERSION/fabric.mod.json ./$OUT_FILE
+cp ./fabric-$FABRIC_VERSION/$PROJ_ID.mixins.json ./$OUT_FILE
+cp -r ./fabric-$FABRIC_VERSION/assets ./$OUT_FILE
 
-#cp ../target/$PROJ_NAME-$VERSION-forge-$MC_VERSION.jar ./
-#mv ./$PROJ_NAME-$VERSION-forge-$MC_VERSION.jar ./$PROJ_NAME-$VERSION-forge-$MC_VERSION.zip
-#unzip ./$PROJ_NAME-$VERSION-forge-$MC_VERSION.zip -d ./forge-$MC_VERSION
-#
-## Process Jars
-#cp -r ./fabric/ca/sperrer/p0t4t0sandwich/$PROJ_NAME/fabric ./$PROJ_NAME/ca/sperrer/p0t4t0sandwich/$PROJ_NAME/fabric
-#cp ./fabric/fabric.mod.json ./$PROJ_NAME
-#cp ./fabric/$PROJ_NAME.mixins.json ./$PROJ_NAME
-#cp -r ./fabric/assets ./$PROJ_NAME
-#
-#cp -r ./forge/ca/sperrer/p0t4t0sandwich/$PROJ_NAME/forge ./$PROJ_NAME/ca/sperrer/p0t4t0sandwich/$PROJ_NAME/forge
-#cp ./forge/pack.mcmeta ./$PROJ_NAME
-#cp ./forge/META-INF/mods.toml ./$PROJ_NAME/META-INF
-#
-#
-## Zip Jar contents
-#cd ./$PROJ_NAME
-#zip -r ./$PROJ_NAME.zip ./*
-#
-## Rename Jar
-#mv ./$PROJ_NAME.zip ../../build/libs/$OUT_FILE
+# Copy forge files
+cp -r ./forge-$FORGE_VERSION/ca/sperrer/p0t4t0sandwich/$PROJ_ID/forge ./$OUT_FILE/ca/sperrer/p0t4t0sandwich/$PROJ_ID
+cp ./forge-$FORGE_VERSION/pack.mcmeta ./$OUT_FILE
+mkdir -p ./$OUT_FILE/META-INF
+cp ./forge-$FORGE_VERSION/META-INF/mods.toml ./$OUT_FILE/META-INF
 
-#rm -rf ./target/temp_build
+# Zip Jar contents
+cd ./$OUT_FILE
+zip -r ../$OUT_FILE.zip ./*
+cd ../
+
+# Rename Jar
+mv ./$OUT_FILE.zip ./$OUT_FILE.jar
+
+# Generate MD5
+md5sum ./$OUT_FILE.jar | cut -d ' ' -f 1 > ./$OUT_FILE.jar.MD5
+
+# Move Jar
+mv ./$OUT_FILE.jar ../$OUT_FILE.jar
+mv ./$OUT_FILE.jar.MD5 ../$OUT_FILE.jar.MD5
+
+# --------------------------- Build 1.20 --------------------------------
+MC_VERSION=1.20
+FABRIC_VERSION=1.17
+FORGE_VERSION=1.20
+OUT_FILE=$PROJ_NAME-$VERSION-$MC_VERSION
+
+mkdir -p ./$OUT_FILE
+
+# Copy common files
+cp -r ./$PROJ_NAME-all/* ./$OUT_FILE/
+
+# Copy fabric files
+cp -r ./fabric-$FABRIC_VERSION/ca/sperrer/p0t4t0sandwich/$PROJ_ID/fabric ./$OUT_FILE/ca/sperrer/p0t4t0sandwich/$PROJ_ID
+cp ./fabric-$FABRIC_VERSION/fabric.mod.json ./$OUT_FILE
+cp ./fabric-$FABRIC_VERSION/$PROJ_ID.mixins.json ./$OUT_FILE
+cp -r ./fabric-$FABRIC_VERSION/assets ./$OUT_FILE
+
+# Copy forge files
+cp -r ./forge-$FORGE_VERSION/ca/sperrer/p0t4t0sandwich/$PROJ_ID/forge ./$OUT_FILE/ca/sperrer/p0t4t0sandwich/$PROJ_ID
+cp ./forge-$FORGE_VERSION/pack.mcmeta ./$OUT_FILE
+mkdir -p ./$OUT_FILE/META-INF
+cp ./forge-$FORGE_VERSION/META-INF/mods.toml ./$OUT_FILE/META-INF
+
+# Zip Jar contents
+cd ./$OUT_FILE
+zip -r ../$OUT_FILE.zip ./*
+cd ../
+
+# Rename Jar
+mv ./$OUT_FILE.zip ./$OUT_FILE.jar
+
+# Generate MD5
+md5sum ./$OUT_FILE.jar | cut -d ' ' -f 1 > ./$OUT_FILE.jar.MD5
+
+# Move Jar
+mv ./$OUT_FILE.jar ../$OUT_FILE.jar
+mv ./$OUT_FILE.jar.MD5 ../$OUT_FILE.jar.MD5
+
+# --------------------------- Cleanup --------------------------------
+rm -rf ./target/temp_build
