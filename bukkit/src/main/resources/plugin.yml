@@ -4,9 +4,9 @@ author: p0t4t0sandwich
 description: A simple, cross API plugin that allows players to set their pronouns.
 main: ca.sperrer.p0t4t0sandwich.lppronouns.bukkit.BukkitMain
 depend: [LuckPerms]
+folia-supported: true
 commands:
     pronouns:
       description: Shows or sets a player's pronouns.
       permission: lppronouns.pronouns
       usage: /pronouns [pronouns]
-folia-supported: true

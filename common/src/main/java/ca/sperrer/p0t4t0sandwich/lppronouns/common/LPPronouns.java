@@ -144,9 +144,9 @@ public class LPPronouns {
             // Command to get help
             case "help":
                 text = "§6Usage: §3/pronouns [pronoun]" +
-                        "\nSupported values: §3/pronouns list" +
-                        "\nRemove pronouns: §3/pronouns none" +
-                        "\nSet pronouns: §3/pronouns [pronoun]" +
+                        "\n§6Supported values: §3/pronouns list" +
+                        "\n§6Remove pronouns: §3/pronouns none" +
+                        "\n§6Set pronouns: §3/pronouns [pronoun]" +
                         "\n\n§6Your pronouns are currently: §a" + pronounsData.getPronouns(player);
                 break;
 

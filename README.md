@@ -2,7 +2,7 @@
 
 A simple, cross API plugin that allows players to set their pronouns.
 
-Works on: Spigot, BungeeCord, Forge, Fabric, and Velocity
+Works on: Spigot, BungeeCord, Fabric, Forge, and Velocity
 
 Link to our support: [Discord](https://discord.gg/jec2jpdj7A)
 
@@ -12,7 +12,7 @@ Link to our support: [Discord](https://discord.gg/jec2jpdj7A)
 - [Spigot](https://www.spigotmc.org/resources/lppronouns.110206/)
 - [Hangar](https://hangar.papermc.io/p0t4t0sandwich/LPPronouns)
 - [Modrinth](https://modrinth.com/plugin/lppronouns)
-- [CurseForge](https://legacy.curseforge.com/minecraft/mc-mods/lppronouns)
+- [CurseForge](https://www.curseforge.com/minecraft/mc-mods/lppronouns)
 
 ### Compatibility Cheatsheet
 
@@ -79,4 +79,4 @@ pronouns:
 - Add table prefix option in config
 - Figure out why velocity can't run the command async
 - Sponge support? API 7/8
-- Nukkit support?
+- Config option for suffix weight

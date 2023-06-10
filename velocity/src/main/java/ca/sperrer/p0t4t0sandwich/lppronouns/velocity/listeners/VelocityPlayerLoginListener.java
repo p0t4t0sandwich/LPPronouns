@@ -17,7 +17,8 @@ public class VelocityPlayerLoginListener {
                 // Refresh pronouns
                 plugin.LPPronouns.pronounsData.refreshPronouns(mapPlayer(event.getPlayer()));
             } catch (Exception e) {
-                System.out.println(e);
+                System.err.println(e);
+                e.printStackTrace();
             }
         });
     }

@@ -14,7 +14,7 @@ import org.slf4j.Logger;
 @Plugin(
         id = "lppronouns",
         name = "LPPronouns",
-        version = "1.0.1",
+        version = "1.0.3",
         authors = "p0t4t0sandwich",
         description = "A simple, cross API plugin that allows players to set their pronouns.",
         url = "https://github.com/p0t4t0sandwich/LPPronouns",

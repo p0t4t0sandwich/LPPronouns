@@ -2,13 +2,14 @@
 
 PROJ_ID=lppronouns
 PROJ_NAME=LPPronouns
-VERSION=1.0.2
+VERSION=1.0.3
+GROUP_ID=ca/sperrer/p0t4t0sandwich
 
 # Make directories
 mkdir -p ./target/temp_build
 cd ./target/temp_build
 
-mkdir -p ./$PROJ_NAME-all/ca/sperrer/p0t4t0sandwich/$PROJ_ID
+mkdir -p ./$PROJ_NAME-all/$GROUP_ID/$PROJ_ID
 
 # --------------------------- Prepare Common --------------------------------
 
@@ -19,7 +20,7 @@ unzip ./$PROJ_NAME-$VERSION-bukkit.zip -d ./bukkit
 rm -rf ./$PROJ_NAME-$VERSION-bukkit.zip
 
 # Copy bukkit files
-mv ./bukkit/ca/sperrer/p0t4t0sandwich/$PROJ_ID/bukkit ./$PROJ_NAME-all/ca/sperrer/p0t4t0sandwich/$PROJ_ID
+mv ./bukkit/$GROUP_ID/$PROJ_ID/bukkit ./$PROJ_NAME-all/$GROUP_ID/$PROJ_ID
 cp ./bukkit/plugin.yml ./$PROJ_NAME-all
 rm -rf ./bukkit
 
@@ -30,7 +31,7 @@ unzip ./$PROJ_NAME-$VERSION-bungee.zip -d ./bungee
 rm -rf ./$PROJ_NAME-$VERSION-bungee.zip
 
 # Copy bungee files
-mv ./bungee/ca/sperrer/p0t4t0sandwich/$PROJ_ID/bungee ./$PROJ_NAME-all/ca/sperrer/p0t4t0sandwich/$PROJ_ID
+mv ./bungee/$GROUP_ID/$PROJ_ID/bungee ./$PROJ_NAME-all/$GROUP_ID/$PROJ_ID
 cp ./bungee/bungee.yml ./$PROJ_NAME-all
 rm -rf ./bungee
 
@@ -41,8 +42,8 @@ unzip ./$PROJ_NAME-$VERSION-velocity.zip -d ./velocity
 rm -rf ./$PROJ_NAME-$VERSION-velocity.zip
 
 # Copy velocity files
-mv ./velocity/ca/sperrer/p0t4t0sandwich/$PROJ_ID/velocity ./$PROJ_NAME-all/ca/sperrer/p0t4t0sandwich/$PROJ_ID
-cp ./velocity/velocity.yml ./$PROJ_NAME-all/ca/sperrer/p0t4t0sandwich/$PROJ_ID
+mv ./velocity/$GROUP_ID/$PROJ_ID/velocity ./$PROJ_NAME-all/$GROUP_ID/$PROJ_ID
+cp ./velocity/velocity.yml ./$PROJ_NAME-all/$GROUP_ID/$PROJ_ID
 cp ./velocity/velocity-plugin.json ./$PROJ_NAME-all
 rm -rf ./velocity
 
@@ -53,8 +54,8 @@ unzip ./$PROJ_NAME-$VERSION-common.zip -d ./common
 rm -rf ./$PROJ_NAME-$VERSION-common.zip
 
 # Copy common files
-mv ./common/ca/sperrer/p0t4t0sandwich/$PROJ_ID/common ./$PROJ_NAME-all/ca/sperrer/p0t4t0sandwich/$PROJ_ID
-mv ./common/ca/sperrer/p0t4t0sandwich/$PROJ_ID/lib ./$PROJ_NAME-all/ca/sperrer/p0t4t0sandwich/$PROJ_ID
+mv ./common/$GROUP_ID/$PROJ_ID/common ./$PROJ_NAME-all/$GROUP_ID/$PROJ_ID
+mv ./common/$GROUP_ID/$PROJ_ID/lib ./$PROJ_NAME-all/$GROUP_ID/$PROJ_ID
 cp ./common/config.yml ./$PROJ_NAME-all
 cp ./common/LICENSE ./$PROJ_NAME-all
 cp ../../README.md ./$PROJ_NAME-all
@@ -102,14 +103,15 @@ mkdir -p ./$OUT_FILE
 cp -r ./$PROJ_NAME-all/* ./$OUT_FILE/
 
 # Copy fabric files
-cp -r ./fabric-$FABRIC_VERSION/ca/sperrer/p0t4t0sandwich/$PROJ_ID/fabric ./$OUT_FILE/ca/sperrer/p0t4t0sandwich/$PROJ_ID
+cp -r ./fabric-$FABRIC_VERSION/$GROUP_ID/$PROJ_ID/fabric ./$OUT_FILE/$GROUP_ID/$PROJ_ID
 cp ./fabric-$FABRIC_VERSION/fabric.mod.json ./$OUT_FILE
 cp ./fabric-$FABRIC_VERSION/$PROJ_ID.mixins.json ./$OUT_FILE
 cp -r ./fabric-$FABRIC_VERSION/assets ./$OUT_FILE
 
 # Copy forge files
-cp -r ./forge-$FORGE_VERSION/ca/sperrer/p0t4t0sandwich/$PROJ_ID/forge ./$OUT_FILE/ca/sperrer/p0t4t0sandwich/$PROJ_ID
+cp -r ./forge-$FORGE_VERSION/$GROUP_ID/$PROJ_ID/forge ./$OUT_FILE/$GROUP_ID/$PROJ_ID
 cp ./forge-$FORGE_VERSION/pack.mcmeta ./$OUT_FILE
+cp -r ./forge-$FORGE_VERSION/$PROJ_NAME.png ./$OUT_FILE
 mkdir -p ./$OUT_FILE/META-INF
 cp ./forge-$FORGE_VERSION/META-INF/mods.toml ./$OUT_FILE/META-INF
 
@@ -140,14 +142,15 @@ mkdir -p ./$OUT_FILE
 cp -r ./$PROJ_NAME-all/* ./$OUT_FILE/
 
 # Copy fabric files
-cp -r ./fabric-$FABRIC_VERSION/ca/sperrer/p0t4t0sandwich/$PROJ_ID/fabric ./$OUT_FILE/ca/sperrer/p0t4t0sandwich/$PROJ_ID
+cp -r ./fabric-$FABRIC_VERSION/$GROUP_ID/$PROJ_ID/fabric ./$OUT_FILE/$GROUP_ID/$PROJ_ID
 cp ./fabric-$FABRIC_VERSION/fabric.mod.json ./$OUT_FILE
 cp ./fabric-$FABRIC_VERSION/$PROJ_ID.mixins.json ./$OUT_FILE
 cp -r ./fabric-$FABRIC_VERSION/assets ./$OUT_FILE
 
 # Copy forge files
-cp -r ./forge-$FORGE_VERSION/ca/sperrer/p0t4t0sandwich/$PROJ_ID/forge ./$OUT_FILE/ca/sperrer/p0t4t0sandwich/$PROJ_ID
+cp -r ./forge-$FORGE_VERSION/$GROUP_ID/$PROJ_ID/forge ./$OUT_FILE/$GROUP_ID/$PROJ_ID
 cp ./forge-$FORGE_VERSION/pack.mcmeta ./$OUT_FILE
+cp -r ./forge-$FORGE_VERSION/$PROJ_NAME.png ./$OUT_FILE
 mkdir -p ./$OUT_FILE/META-INF
 cp ./forge-$FORGE_VERSION/META-INF/mods.toml ./$OUT_FILE/META-INF
 
