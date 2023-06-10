@@ -24,6 +24,12 @@ public class BungeePronounsCommand extends Command {
                 if ((sender instanceof ProxiedPlayer)) {
                     ProxiedPlayer player = (ProxiedPlayer) sender;
 
+                    // Permission check
+                    if (!player.hasPermission("lppronouns.pronouns")) {
+                        player.sendMessage(new ComponentBuilder("§cYou do not have permission to use this command.").create());
+                        return;
+                    }
+
                     String text = plugin.LPPronouns.commandHandler(mapPlayer(player), args);
 
                     player.sendMessage(new ComponentBuilder(text).create());

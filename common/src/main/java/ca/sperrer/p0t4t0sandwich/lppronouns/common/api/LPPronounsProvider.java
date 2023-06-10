@@ -1,4 +1,6 @@
-package ca.sperrer.p0t4t0sandwich.lppronouns.api;
+package ca.sperrer.p0t4t0sandwich.lppronouns.common.api;
+
+import ca.sperrer.p0t4t0sandwich.lppronouns.common.LPPronouns;
 
 public class LPPronounsProvider {
     private static LPPronouns instance = null;

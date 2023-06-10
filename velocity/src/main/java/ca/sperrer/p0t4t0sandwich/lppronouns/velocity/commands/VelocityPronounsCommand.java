@@ -6,7 +6,6 @@ import com.velocitypowered.api.proxy.Player;
 import net.kyori.adventure.text.Component;
 
 import static ca.sperrer.p0t4t0sandwich.lppronouns.velocity.VelocityUtils.mapPlayer;
-import static net.kyori.adventure.text.format.NamedTextColor.GREEN;
 
 public class VelocityPronounsCommand implements SimpleCommand {
     private final VelocityMain plugin = VelocityMain.getInstance();
@@ -19,9 +18,15 @@ public class VelocityPronounsCommand implements SimpleCommand {
                 if ((invocation.source() instanceof Player)) {
                     Player player = (Player) invocation.source();
 
+                    // Permission check
+                    if (!player.hasPermission("lppronouns.pronouns")) {
+                        player.sendMessage(Component.text("§cYou do not have permission to use this command."));
+                        return;
+                    }
+
                     String text = plugin.LPPronouns.commandHandler(mapPlayer(player), invocation.arguments());
 
-                    player.sendMessage(Component.text(text).color(GREEN));
+                    player.sendMessage(Component.text(text));
                 } else {
                     plugin.getLogger().info("§cYou must be a player to use this command.");
                 }

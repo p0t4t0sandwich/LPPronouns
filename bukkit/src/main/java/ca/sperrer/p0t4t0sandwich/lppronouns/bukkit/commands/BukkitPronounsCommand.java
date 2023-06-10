@@ -25,14 +25,22 @@ public class BukkitPronounsCommand implements CommandExecutor {
                 if ((sender instanceof Player)) {
                     Player player = (Player) sender;
 
+                    // Permission check
+                    if (!player.hasPermission("lppronouns.pronouns")) {
+                        player.sendMessage("§cYou do not have permission to use this command.");
+                        success.set(true);
+                        return;
+                    }
+
                     String text = plugin.LPPronouns.commandHandler(mapPlayer(player), args);
 
                     player.sendMessage(text);
-                    success.set(true);
                 } else {
                     plugin.getLogger().info(ansiiParser("§cYou must be a player to use this command."));
                 }
+                success.set(true);
             } catch (Exception e) {
+                success.set(false);
                 System.out.println(e);
                 e.printStackTrace();
             }

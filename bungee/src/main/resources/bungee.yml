@@ -7,4 +7,5 @@ depends: [LuckPerms]
 commands:
   pronouns:
     description: Shows or sets a player's pronouns.
+    permission: lppronouns.pronouns
     usage: /pronouns [pronouns]

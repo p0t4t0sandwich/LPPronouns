@@ -13,7 +13,6 @@ pluginManagement {
 rootProject.name = 'LPPronouns'
 
 include(
-        'api',
         'bukkit',
         'bungee',
         'fabric-1.17',

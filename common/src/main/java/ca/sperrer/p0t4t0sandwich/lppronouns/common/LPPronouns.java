@@ -1,6 +1,6 @@
 package ca.sperrer.p0t4t0sandwich.lppronouns.common;
 
-import ca.sperrer.p0t4t0sandwich.lppronouns.api.*;
+import ca.sperrer.p0t4t0sandwich.lppronouns.common.api.LPPronounsProvider;
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.storage.DataSource;
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.storage.Database;
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.pronouns.PronounsData;
@@ -82,7 +82,7 @@ public class LPPronouns {
         STARTED = true;
 
         // Set API instance
-        LPPronounsProvider.register((ca.sperrer.p0t4t0sandwich.lppronouns.api.LPPronouns) this);
+        LPPronounsProvider.register(this);
 
         String type = config.getString("storage.type");
         database = DataSource.getDatabase(type, config);
@@ -115,29 +115,55 @@ public class LPPronouns {
      */
     public String commandHandler(PlayerInstance player, String[] args) {
         if (args.length == 0) {
-            return "Your pronouns are currently: " + pronounsData.getPronouns(player);
+            return "§6Your pronouns are currently: §a" + pronounsData.getPronouns(player);
         }
+
         // Get Pronoun List
         HashMap<String, String> pronoun_list = getPronounsMap();
 
-        StringBuilder text = new StringBuilder();
+        String text = "";
+        switch (args[0]) {
+            // Command to list pronouns
+            case "list":
+                text += "§6Supported values:";
+                for (Map.Entry<String, String> entry: pronoun_list.entrySet()) {
+                    text += "\n§6" + entry.getKey() + ": §a" + entry.getValue();
+                }
+                break;
 
-        // If player does not have a pronoun set, set it to unspecified
-        if (Objects.equals(args[0], "none") || Objects.equals(args[0], "remove")) {
-            pronounsData.deletePronouns(player);
-            text = new StringBuilder("Your pronouns have been removed.");
+            // Command to remove pronouns
+            case "clear":
+            case "delete":
+            case "none":
+            case "remove":
+            case "reset":
+                pronounsData.deletePronouns(player);
+                text = "§aYour pronouns have been removed.";
+                break;
 
-            // If the pronoun exists, set it to the specified value
-        } else if (pronoun_list.containsKey(args[0])) {
-            pronounsData.setPronouns(player, args[0]);
-            text = new StringBuilder("Your pronouns are now set to " + pronoun_list.get(args[0]));
-        } else {
-            // If the pronoun does not exist, return an error
-            text.append("Sorry, that is not a supported value, if you feel this is an error please create a request the addition in the Discord forum.\nSupported values:");
-            for (Map.Entry<String, String> entry: pronoun_list.entrySet()) {
-                text.append("\n").append(entry.getKey()).append(": ").append(entry.getValue());
-            }
+            // Command to get help
+            case "help":
+                text = "§6Usage: §3/pronouns [pronoun]" +
+                        "\nSupported values: §3/pronouns list" +
+                        "\nRemove pronouns: §3/pronouns none" +
+                        "\nSet pronouns: §3/pronouns [pronoun]" +
+                        "\n\n§6Your pronouns are currently: §a" + pronounsData.getPronouns(player);
+                break;
+
+            default:
+                // If the pronoun exists, set it to the specified value
+                if (pronoun_list.containsKey(args[0])) {
+                    pronounsData.setPronouns(player, args[0]);
+                    text = "§6Your pronouns are now set to: §a" + pronoun_list.get(args[0]);
+                } else {
+                    // If the pronoun does not exist, return an error
+                    text = "§6Sorry, that is not a supported value, if you feel this is an error please create a request the addition in the Discord forum.\nSupported values:";
+                    for (Map.Entry<String, String> entry: pronoun_list.entrySet()) {
+                        text += "\n§6" + entry.getKey() + ": §a" + entry.getValue();
+                    }
+                }
+                break;
         }
-        return "§a" + text;
+        return text;
     }
 }
