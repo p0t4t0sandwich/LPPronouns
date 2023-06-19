@@ -1,6 +1,8 @@
 package ca.sperrer.p0t4t0sandwich.lppronouns.common;
 
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.api.LPPronounsProvider;
+import ca.sperrer.p0t4t0sandwich.lppronouns.common.hooks.LuckPermsHook;
+import ca.sperrer.p0t4t0sandwich.lppronouns.common.relay.MessageRelay;
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.storage.DataSource;
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.storage.Database;
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.pronouns.PronounsData;
@@ -9,6 +11,7 @@ import dev.dejvokep.boostedyaml.block.Block;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -22,11 +25,14 @@ public class LPPronouns {
      * STARTED: Whether the LPPronouns has been started
      */
     private static YamlDocument config;
-    private final Object logger;
+    private static Object logger;
     private static LPPronouns singleton = null;
     private boolean STARTED = false;
     public Database database;
     public PronounsData pronounsData;
+    private static final ArrayList<Object> hooks = new ArrayList<>();
+    private MessageRelay messageRelay;
+    public static boolean cancelChat = false;
 
     /**
      * Constructor for the LPPronouns class.
@@ -35,7 +41,7 @@ public class LPPronouns {
      */
     public LPPronouns(String configPath, Object logger) {
         singleton = this;
-        this.logger = logger;
+        LPPronouns.logger = logger;
 
         // Config
         try {
@@ -61,7 +67,7 @@ public class LPPronouns {
      * Use whatever logger is being used.
      * @param message The message to log
      */
-    public void useLogger(String message) {
+    public static void useLogger(String message) {
         if (logger instanceof java.util.logging.Logger) {
             ((java.util.logging.Logger) logger).info(message);
         } else if (logger instanceof org.slf4j.Logger) {
@@ -84,10 +90,22 @@ public class LPPronouns {
         // Set API instance
         LPPronounsProvider.register(this);
 
+        // Add LuckPerms hook
+        useLogger("LuckPerms detected, enabling LuckPerms hook.");
+        addHook(new LuckPermsHook());
+
+        // Set up database
         String type = config.getString("storage.type");
         database = DataSource.getDatabase(type, config);
 
+        // Set up pronouns data
         pronounsData = DataSource.getPronounsData(database, getPronounsMap());
+
+        // Set up message formatter
+        if (config.getBoolean("formatting.enabled") && config.getString("formatting.format") != null) {
+            cancelChat = true;
+            messageRelay = new MessageRelay(config.getString("formatting.format"));
+        }
 
         useLogger("LPPronouns has been started!");
     }
@@ -165,5 +183,13 @@ public class LPPronouns {
                 break;
         }
         return text;
+    }
+
+    /**
+     * Add a hook to the list of hooks
+     * @param hook The hook to add
+     */
+    public static void addHook(Object hook) {
+        hooks.add(hook);
     }
 }

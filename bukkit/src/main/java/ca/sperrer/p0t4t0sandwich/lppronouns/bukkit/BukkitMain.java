@@ -1,7 +1,7 @@
 package ca.sperrer.p0t4t0sandwich.lppronouns.bukkit;
 
 import ca.sperrer.p0t4t0sandwich.lppronouns.bukkit.commands.BukkitPronounsCommand;
-import ca.sperrer.p0t4t0sandwich.lppronouns.bukkit.listeners.BukkitPlayerLoginListener;
+import ca.sperrer.p0t4t0sandwich.lppronouns.bukkit.listeners.player.BukkitPlayerLoginListener;
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.LPPronouns;
 import org.bukkit.plugin.java.JavaPlugin;
 

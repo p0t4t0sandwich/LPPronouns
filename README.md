@@ -54,6 +54,18 @@ storage:
     username: root
     password: password
 
+# Message formatting configuration
+formatting:
+  # This sets LPPronouns as the server's chat formatter
+  enabled: true
+  # %player% - Player name
+  # %message% - Message
+  # %server% - Server name
+  # %prefix% - Player prefix
+  # %suffix% - Player suffix
+  # %displayname% - Player display name
+  format: "<%prefix%%displayname%%suffix%> %message%"
+
 # Pronoun configuration
 pronouns:
   none: ""

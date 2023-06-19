@@ -1,4 +1,4 @@
-package ca.sperrer.p0t4t0sandwich.lppronouns.bukkit.listeners;
+package ca.sperrer.p0t4t0sandwich.lppronouns.bukkit.listeners.player;
 
 import ca.sperrer.p0t4t0sandwich.lppronouns.bukkit.BukkitMain;
 import org.bukkit.event.EventHandler;
