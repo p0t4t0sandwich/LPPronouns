@@ -1,6 +1,8 @@
 package ca.sperrer.p0t4t0sandwich.lppronouns.forge.commands;
 
+import ca.sperrer.p0t4t0sandwich.lppronouns.common.LPPronouns;
 import ca.sperrer.p0t4t0sandwich.lppronouns.forge.ForgeMain;
+import ca.sperrer.p0t4t0sandwich.lppronouns.forge.player.ForgePronounPlayer;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -10,14 +12,11 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import static ca.sperrer.p0t4t0sandwich.lppronouns.common.Utils.ansiiParser;
 import static ca.sperrer.p0t4t0sandwich.lppronouns.common.Utils.runTaskAsync;
-import static ca.sperrer.p0t4t0sandwich.lppronouns.forge.ForgeUtils.mapPlayer;
 import static net.minecraft.commands.Commands.argument;
 import static net.minecraft.commands.Commands.literal;
 
 
 public final class ForgePronounsCommand {
-    private static final ForgeMain mod = ForgeMain.getInstance();
-
     @SubscribeEvent
     public static void registerCommand(RegisterCommandsEvent event) {
         event.getDispatcher().register(literal("pronouns")
@@ -31,10 +30,10 @@ public final class ForgePronounsCommand {
                             // Send message to player or console
                             Entity entity = context.getSource().getEntity();
                             if (entity instanceof ServerPlayer) {
-                                String text = mod.LPPronouns.commandHandler(mapPlayer((ServerPlayer) entity), args);
+                                String text = LPPronouns.commandHandler(new ForgePronounPlayer((ServerPlayer) entity), args);
                                 ((ServerPlayer) entity).displayClientMessage(Component.empty().append(text), false);
                             } else {
-                                mod.logger.info(ansiiParser("§cYou must be a player to use this command."));
+                                ForgeMain.logger.info(ansiiParser("§cYou must be a player to use this command."));
                             }
                         } catch (Exception e) {
                             System.err.println(e);

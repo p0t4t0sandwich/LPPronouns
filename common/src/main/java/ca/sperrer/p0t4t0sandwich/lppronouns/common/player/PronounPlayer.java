@@ -25,6 +25,18 @@ public interface PronounPlayer {
     String getDisplayName();
 
     /**
+     * Get the server the player is on
+     * @return The server the player is on
+     */
+    String getServerName();
+
+    /**
+     * Set the server the player is on
+     * @param serverName The server the player is on
+     */
+    void setServerName(String serverName);
+
+    /**
      * Send a message to the player
      * @param message The message to send
      */

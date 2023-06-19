@@ -1,11 +1,11 @@
 package ca.sperrer.p0t4t0sandwich.lppronouns.velocity.commands;
 
+import ca.sperrer.p0t4t0sandwich.lppronouns.common.LPPronouns;
 import ca.sperrer.p0t4t0sandwich.lppronouns.velocity.VelocityMain;
+import ca.sperrer.p0t4t0sandwich.lppronouns.velocity.player.VelocityPronounPlayer;
 import com.velocitypowered.api.command.SimpleCommand;
 import com.velocitypowered.api.proxy.Player;
 import net.kyori.adventure.text.Component;
-
-import static ca.sperrer.p0t4t0sandwich.lppronouns.velocity.VelocityUtils.mapPlayer;
 
 public class VelocityPronounsCommand implements SimpleCommand {
     private final VelocityMain plugin = VelocityMain.getInstance();
@@ -24,7 +24,7 @@ public class VelocityPronounsCommand implements SimpleCommand {
                         return;
                     }
 
-                    String text = plugin.LPPronouns.commandHandler(mapPlayer(player), invocation.arguments());
+                    String text = LPPronouns.commandHandler(new VelocityPronounPlayer(player), invocation.arguments());
 
                     player.sendMessage(Component.text(text));
                 } else {

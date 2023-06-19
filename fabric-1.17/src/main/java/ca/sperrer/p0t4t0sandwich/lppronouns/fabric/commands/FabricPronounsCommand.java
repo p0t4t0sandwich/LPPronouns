@@ -1,6 +1,8 @@
 package ca.sperrer.p0t4t0sandwich.lppronouns.fabric.commands;
 
+import ca.sperrer.p0t4t0sandwich.lppronouns.common.LPPronouns;
 import ca.sperrer.p0t4t0sandwich.lppronouns.fabric.FabricMain;
+import ca.sperrer.p0t4t0sandwich.lppronouns.fabric.player.FabricPronounPlayer;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import net.minecraft.entity.Entity;
@@ -10,7 +12,6 @@ import net.minecraft.text.Text;
 
 import static ca.sperrer.p0t4t0sandwich.lppronouns.common.Utils.ansiiParser;
 import static ca.sperrer.p0t4t0sandwich.lppronouns.common.Utils.runTaskAsync;
-import static ca.sperrer.p0t4t0sandwich.lppronouns.fabric.FabricUtils.mapPlayer;
 import static net.minecraft.server.command.CommandManager.argument;
 import static net.minecraft.server.command.CommandManager.literal;
 
@@ -30,7 +31,7 @@ public final class FabricPronounsCommand {
                         // Send message to player or console
                         Entity entity = context.getSource().getEntity();
                         if (entity instanceof ServerPlayerEntity) {
-                            String text = mod.LPPronouns.commandHandler(mapPlayer((ServerPlayerEntity) entity), args);
+                            String text = LPPronouns.commandHandler(new FabricPronounPlayer((ServerPlayerEntity) entity), args);
                             ((ServerPlayerEntity) entity).sendMessage(Text.of(text), false);
                         } else {
                             mod.logger.info(ansiiParser("§cYou must be a player to use this command."));

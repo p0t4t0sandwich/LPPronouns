@@ -1,6 +1,6 @@
 package ca.sperrer.p0t4t0sandwich.lppronouns.common.pronouns;
 
-import ca.sperrer.p0t4t0sandwich.lppronouns.common.PlayerInstance;
+import ca.sperrer.p0t4t0sandwich.lppronouns.common.player.PronounPlayer;
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.storage.Database;
 
 import java.sql.Connection;
@@ -24,7 +24,7 @@ public class MySQLPronounsData extends PronounsData {
      * @inheritDoc
      */
     @Override
-    public String dbGetPronouns(PlayerInstance player) {
+    public String dbGetPronouns(PronounPlayer player) {
         UUID playerUuid = player.getUUID();
 
         // Get the player's suffix from the database
@@ -49,7 +49,7 @@ public class MySQLPronounsData extends PronounsData {
      * @inheritDoc
      */
     @Override
-    public void dbSetPronouns(PlayerInstance player, String pronouns) {
+    public void dbSetPronouns(PronounPlayer player, String pronouns) {
         UUID playerUuid = player.getUUID();
 
         // Update the player's suffix in the database

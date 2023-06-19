@@ -22,7 +22,7 @@ formatting:
   # %prefix% - Player prefix
   # %suffix% - Player suffix
   # %displayname% - Player display name
-  format: "<%prefix%%displayname%%suffix%> %message%"
+  format: "<%displayname% (%suffix%)> %message%"
 
 # Pronoun configuration
 pronouns:

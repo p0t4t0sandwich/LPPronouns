@@ -2,6 +2,7 @@ package ca.sperrer.p0t4t0sandwich.lppronouns.common;
 
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.api.LPPronounsProvider;
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.hooks.LuckPermsHook;
+import ca.sperrer.p0t4t0sandwich.lppronouns.common.player.PronounPlayer;
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.relay.MessageRelay;
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.storage.DataSource;
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.storage.Database;
@@ -29,7 +30,7 @@ public class LPPronouns {
     private static LPPronouns singleton = null;
     private boolean STARTED = false;
     public Database database;
-    public PronounsData pronounsData;
+    public static PronounsData pronounsData;
     private static final ArrayList<Object> hooks = new ArrayList<>();
     private MessageRelay messageRelay;
     public static boolean cancelChat = false;
@@ -91,7 +92,7 @@ public class LPPronouns {
         LPPronounsProvider.register(this);
 
         // Add LuckPerms hook
-        useLogger("LuckPerms detected, enabling LuckPerms hook.");
+        useLogger("Enabling LuckPerms hook.");
         addHook(new LuckPermsHook());
 
         // Set up database
@@ -114,7 +115,7 @@ public class LPPronouns {
      * Get pronouns from the config file.
      * @return The pronouns
      */
-    public HashMap<String, String> getPronounsMap() {
+    public static HashMap<String, String> getPronounsMap() {
         HashMap<String, String> pronouns = new HashMap<>();
 
         HashMap<String, Block> pronouns_config = (HashMap<String, Block>) config.getBlock("pronouns").getStoredValue();
@@ -127,11 +128,19 @@ public class LPPronouns {
     }
 
     /**
+     * Getter for PronounsData
+     * @return The PronounsData
+     */
+    public static PronounsData getPronounsData() {
+        return pronounsData;
+    }
+
+    /**
      * Command Handler
      * @param args The arguments
      * @return The output
      */
-    public String commandHandler(PlayerInstance player, String[] args) {
+    public static String commandHandler(PronounPlayer player, String[] args) {
         if (args.length == 0) {
             return "§6Your pronouns are currently: §a" + pronounsData.getPronouns(player);
         }

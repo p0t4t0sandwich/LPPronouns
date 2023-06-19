@@ -1,15 +1,15 @@
 package ca.sperrer.p0t4t0sandwich.lppronouns.bukkit.commands;
 
 import ca.sperrer.p0t4t0sandwich.lppronouns.bukkit.BukkitMain;
+import ca.sperrer.p0t4t0sandwich.lppronouns.bukkit.player.BukkitPronounPlayer;
+import ca.sperrer.p0t4t0sandwich.lppronouns.common.LPPronouns;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static ca.sperrer.p0t4t0sandwich.lppronouns.bukkit.BukkitUtils.mapPlayer;
 import static ca.sperrer.p0t4t0sandwich.lppronouns.common.Utils.ansiiParser;
 import static ca.sperrer.p0t4t0sandwich.lppronouns.common.Utils.runTaskAsync;
 
@@ -32,7 +32,7 @@ public class BukkitPronounsCommand implements CommandExecutor {
                         return;
                     }
 
-                    String text = plugin.LPPronouns.commandHandler(mapPlayer(player), args);
+                    String text = LPPronouns.commandHandler(new BukkitPronounPlayer(player), args);
 
                     player.sendMessage(text);
                 } else {

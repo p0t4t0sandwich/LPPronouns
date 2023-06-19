@@ -1,6 +1,6 @@
 package ca.sperrer.p0t4t0sandwich.lppronouns.common.pronouns;
 
-import ca.sperrer.p0t4t0sandwich.lppronouns.common.PlayerInstance;
+import ca.sperrer.p0t4t0sandwich.lppronouns.common.player.PronounPlayer;
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.storage.Database;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.LuckPermsProvider;
@@ -30,14 +30,14 @@ public abstract class PronounsData {
      * @param player The player to get the pronouns of.
      * @return The pronouns of the player.
      */
-    public abstract String dbGetPronouns(PlayerInstance player);
+    public abstract String dbGetPronouns(PronounPlayer player);
 
     /**
      * Get the pronouns of a player.
      * @param player The player to get the pronouns of.
      * @return The pronouns of the player.
      */
-    public String getPronouns(PlayerInstance player) {
+    public String getPronouns(PronounPlayer player) {
         return this.dbGetPronouns(player);
     }
 
@@ -46,14 +46,14 @@ public abstract class PronounsData {
      * @param player The player to set the pronouns of.
      * @param pronouns The pronouns to set.
      */
-    public abstract void dbSetPronouns(PlayerInstance player, String pronouns);
+    public abstract void dbSetPronouns(PronounPlayer player, String pronouns);
 
     /**
      * Set the pronouns of a player.
      * @param player The player to set the pronouns of.
      * @param pronouns The pronouns to set.
      */
-    public void setPronouns(PlayerInstance player, String pronouns) {
+    public void setPronouns(PronounPlayer player, String pronouns) {
         this.dbSetPronouns(player, pronouns);
         UUID playerUuid = player.getUUID();
 
@@ -71,7 +71,7 @@ public abstract class PronounsData {
      * Remove the pronouns of a player.
      * @param player The player to remove the pronouns of.
      */
-    public void deletePronouns(PlayerInstance player) {
+    public void deletePronouns(PronounPlayer player) {
         UUID playerUuid = player.getUUID();
 
         // Get the player's pronouns from the database
@@ -92,7 +92,7 @@ public abstract class PronounsData {
      * Refresh the pronouns of a player.
      * @param player The player to refresh the pronouns of.
      */
-    public void refreshPronouns(PlayerInstance player) {
+    public void refreshPronouns(PronounPlayer player) {
         // Get the player's pronouns from the database
         String pronouns = getPronouns(player);
 

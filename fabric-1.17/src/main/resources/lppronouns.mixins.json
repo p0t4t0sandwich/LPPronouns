@@ -8,6 +8,7 @@
   "client": [
   ],
   "server": [
+    "listeners.player.FabricPlayerMessageListener"
   ],
   "injectors": {
     "defaultRequire": 1

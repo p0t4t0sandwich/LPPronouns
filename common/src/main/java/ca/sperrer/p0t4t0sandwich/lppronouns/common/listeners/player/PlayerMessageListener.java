@@ -14,12 +14,30 @@ public interface PlayerMessageListener {
      * @param pronounPlayer The player
      * @param message The message
      */
-    default void taterPlayerMessage(PronounPlayer pronounPlayer, String message) {
+    default void pronounPlayerMessage(PronounPlayer pronounPlayer, String message) {
         runTaskAsync(() -> {
             try {
                 MessageRelay relay = MessageRelay.getInstance();
                 // Send message through relay
                 relay.sendMessage(pronounPlayer, message);
+            } catch (Exception e) {
+                System.err.println(e);
+                e.printStackTrace();
+            }
+        });
+    }
+
+    /**
+     * Called when a player sends a message, and sends it to the message relay.
+     * @param pronounPlayer The player
+     * @param message The message
+     */
+    default void pronounPlayerMessage(PronounPlayer pronounPlayer, String server, String message) {
+        runTaskAsync(() -> {
+            try {
+                MessageRelay relay = MessageRelay.getInstance();
+                // Send message through relay
+                relay.sendMessage(pronounPlayer, server, message);
             } catch (Exception e) {
                 System.err.println(e);
                 e.printStackTrace();

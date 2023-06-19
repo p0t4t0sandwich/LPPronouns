@@ -10,6 +10,7 @@ import java.util.UUID;
  */
 public class BukkitPronounPlayer implements PronounPlayer {
     private final Player player;
+    private String serverName;
 
     /**
      * Constructor.
@@ -17,6 +18,7 @@ public class BukkitPronounPlayer implements PronounPlayer {
      */
     public BukkitPronounPlayer(Player player) {
         this.player = player;
+        this.serverName = "";
     }
 
     /**
@@ -41,6 +43,22 @@ public class BukkitPronounPlayer implements PronounPlayer {
     @Override
     public String getDisplayName() {
         return player.getDisplayName();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    @Override
+    public String getServerName() {
+        return serverName;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    @Override
+    public void setServerName(String serverName) {
+        this.serverName = serverName;
     }
 
     /**

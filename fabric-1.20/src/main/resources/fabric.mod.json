@@ -18,7 +18,7 @@
   },
   "license": "GPL-3",
   "icon": "assets/LPPronouns/icon.png",
-  "environment": "*",
+  "environment": "server",
   "entrypoints": {
     "server": [
       "ca.sperrer.p0t4t0sandwich.lppronouns.fabric.FabricMain"
@@ -28,13 +28,13 @@
     "lppronouns.mixins.json"
   ],
   "depends": {
-  "fabricloader": ">=0.9.0",
-  "fabric-api-base": "*",
-  "fabric-command-api-v2": "*",
-  "fabric-lifecycle-events-v1": "*",
-  "fabric-networking-api-v1": "*",
-  "fabric": "*",
-  "minecraft": ">=${minecraft_version}",
-  "luckperms": "*"
-}
+    "fabricloader": ">=0.9.0",
+    "fabric-api-base": "*",
+    "fabric-command-api-v1": "*",
+    "fabric-lifecycle-events-v1": "*",
+    "fabric-networking-api-v1": "*",
+    "fabric": "*",
+    "minecraft": ">=${minecraft_version}",
+    "luckperms": "*"
+  }
 }

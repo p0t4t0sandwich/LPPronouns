@@ -2,8 +2,10 @@ package ca.sperrer.p0t4t0sandwich.lppronouns.velocity;
 
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.LPPronouns;
 import ca.sperrer.p0t4t0sandwich.lppronouns.velocity.commands.VelocityPronounsCommand;
-import ca.sperrer.p0t4t0sandwich.lppronouns.velocity.listeners.VelocityPlayerLoginListener;
+import ca.sperrer.p0t4t0sandwich.lppronouns.velocity.listeners.player.VelocityPlayerLoginListener;
+import ca.sperrer.p0t4t0sandwich.lppronouns.velocity.listeners.player.VelocityPlayerMessageListener;
 import com.google.inject.Inject;
+import com.velocitypowered.api.event.EventManager;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
 import com.velocitypowered.api.plugin.Dependency;
@@ -23,7 +25,7 @@ import org.slf4j.Logger;
         }
 )
 public class VelocityMain {
-    public LPPronouns LPPronouns;
+    public LPPronouns lpPronouns;
 
     @Inject
     private ProxyServer server;
@@ -59,11 +61,13 @@ public class VelocityMain {
         this.logger.info("LPPronouns is running on " + getServerType() + ".");
 
         // Start LPPronouns
-        LPPronouns = new LPPronouns("plugins", getLogger());
-        LPPronouns.start();
+        lpPronouns = new LPPronouns("plugins", getLogger());
+        lpPronouns.start();
 
         // Register event listener
-        server.getEventManager().register(this, new VelocityPlayerLoginListener());
+        EventManager eventManager = server.getEventManager();
+        eventManager.register(this, new VelocityPlayerLoginListener());
+        eventManager.register(this, new VelocityPlayerMessageListener());
 
         // Register commands
         server.getCommandManager().register("pronouns", new VelocityPronounsCommand());

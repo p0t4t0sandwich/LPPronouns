@@ -1,7 +1,7 @@
 package ca.sperrer.p0t4t0sandwich.lppronouns.common.pronouns;
 
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.storage.Database;
-import ca.sperrer.p0t4t0sandwich.lppronouns.common.PlayerInstance;
+import ca.sperrer.p0t4t0sandwich.lppronouns.common.player.PronounPlayer;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
@@ -23,7 +23,7 @@ public class MongoDBPronounsData extends PronounsData {
      * @inheritDoc
      */
     @Override
-    public String dbGetPronouns(PlayerInstance player) {
+    public String dbGetPronouns(PronounPlayer player) {
         String player_uuid = player.getUUID().toString();
         try {
             MongoClient mongoClient = (MongoClient) this.db.getConnection();
@@ -57,7 +57,7 @@ public class MongoDBPronounsData extends PronounsData {
      * @inheritDoc
      */
     @Override
-    public void dbSetPronouns(PlayerInstance player, String pronouns) {
+    public void dbSetPronouns(PronounPlayer player, String pronouns) {
         String player_uuid = player.getUUID().toString();
         try {
             MongoClient mongoClient = (MongoClient) this.db.getConnection();

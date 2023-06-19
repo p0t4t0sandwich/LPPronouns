@@ -18,14 +18,15 @@ Link to our support: [Discord](https://discord.gg/jec2jpdj7A)
 
 | Server type | Versions    | Jar Name                               |
 |-------------|-------------|----------------------------------------|
-| All 1.20    | 1.20-1.20.1 | `LPPronouns-<version>-1.20.jar`        |
 | All 1.19    | 1.19-1.19.4 | `LPPronouns-<version>-1.19.jar`        |
-| Bukkit      | 1.8-1.20    | `LPPronouns-<version>-bukkit.jar`      |
-| BungeeCord  | 1.20-1.20   | `LPPronouns-<version>-bungee.jar`      |
+| All 1.20    | 1.20-1.20.1 | `LPPronouns-<version>-1.20.jar`        |
+| Bukkit      | 1.8-1.20.1  | `LPPronouns-<version>-bukkit.jar`      |
+| BungeeCord  | 1.20-1.20.1 | `LPPronouns-<version>-bungee.jar`      |
 | Velocity    | API v3      | `LPPronouns-<version>-velocity.jar`    |
-| Fabric      | 1.17-1.20   | `LPPronouns-<version>-fabric-1.17.jar` |
-| Forge 1.20  | 1.20        | `LPPronouns-<version>-forge-1.20.jar`  |
+| Fabric 1.17 | 1.17-1.19.4 | `LPPronouns-<version>-fabric-1.17.jar` |
+| Fabric 1.20 | 1.20-1.20.1 | `LPPronouns-<version>-fabric-1.20.jar` |
 | Forge 1.19  | 1.19-1.19.4 | `LPPronouns-<version>-forge-1.19.jar`  |
+| Forge 1.20  | 1.20-1.20.1 | `LPPronouns-<version>-forge-1.20.jar`  |
 
 ## Dependencies
 
@@ -64,7 +65,7 @@ formatting:
   # %prefix% - Player prefix
   # %suffix% - Player suffix
   # %displayname% - Player display name
-  format: "<%prefix%%displayname%%suffix%> %message%"
+  format: "<%displayname% (%suffix%)> %message%"
 
 # Pronoun configuration
 pronouns:
@@ -79,6 +80,7 @@ pronouns:
 
 ## TODO
 
+- Create a dynamic pronoun system (mix and match pronouns without needing to hardcode them in the config)
 - Improve MySQL support
 - add sqlite support
 - add h2 support
@@ -90,5 +92,4 @@ pronouns:
 - Add tab completion? -- API dependent
 - Add table prefix option in config
 - Figure out why velocity can't run the command async
-- Sponge support? API 7/8
 - Config option for suffix weight

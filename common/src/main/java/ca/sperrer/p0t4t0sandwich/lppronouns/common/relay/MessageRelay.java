@@ -77,4 +77,23 @@ public class MessageRelay {
             pronounPlayer.sendMessage(formattedMessage);
         }
     }
+
+    /**
+     * Relays a message to all players.
+     * @param player The player
+     * @param server The server
+     * @param message The message
+     */
+    public void sendMessage(PronounPlayer player, String server, String message) {
+        // Message formatting
+        String formattedMessage = player.parsePlaceholders(this.formatting).parseString("message", message).getResult();
+        LPPronouns.useLogger(PlaceholderParser.stripSectionSign(formattedMessage));
+
+        // Relay message to each PronounPlayer in the cache
+        for (PronounPlayer pronounPlayer : this.pronounPlayerCache.values()) {
+            if (pronounPlayer.getServerName().equals(server)) {
+                pronounPlayer.sendMessage(formattedMessage);
+            }
+        }
+    }
 }

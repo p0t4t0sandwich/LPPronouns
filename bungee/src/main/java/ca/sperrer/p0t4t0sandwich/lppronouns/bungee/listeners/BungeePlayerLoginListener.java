@@ -1,26 +1,21 @@
 package ca.sperrer.p0t4t0sandwich.lppronouns.bungee.listeners;
 
-import ca.sperrer.p0t4t0sandwich.lppronouns.bungee.BungeeMain;
+import ca.sperrer.p0t4t0sandwich.lppronouns.bungee.player.BungeePronounPlayer;
+import ca.sperrer.p0t4t0sandwich.lppronouns.common.listeners.player.PlayerLoginListener;
 import net.md_5.bungee.api.event.PostLoginEvent;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
 
-import static ca.sperrer.p0t4t0sandwich.lppronouns.bungee.BungeeUtils.mapPlayer;
-import static ca.sperrer.p0t4t0sandwich.lppronouns.common.Utils.runTaskAsync;
-
-public class BungeePlayerLoginListener implements Listener {
-    BungeeMain plugin = BungeeMain.getInstance();
-
+/**
+ * Listens for player logins and refreshes their pronouns.
+ */
+public class BungeePlayerLoginListener implements Listener, PlayerLoginListener {
+    /**
+     * Called when a player logs in and refreshes their pronouns.
+     * @param event The event.
+     */
     @EventHandler
-    public void onPostLogin(PostLoginEvent event) {
-        runTaskAsync(() -> {
-            try {
-                // Refresh pronouns
-                plugin.LPPronouns.pronounsData.refreshPronouns(mapPlayer(event.getPlayer()));
-            } catch (Exception e) {
-                System.out.println(e);
-                e.printStackTrace();
-            }
-        });
+    public void onPlayerLogin(PostLoginEvent event) {
+        pronounPlayerLogin(new BungeePronounPlayer(event.getPlayer()));
     }
 }

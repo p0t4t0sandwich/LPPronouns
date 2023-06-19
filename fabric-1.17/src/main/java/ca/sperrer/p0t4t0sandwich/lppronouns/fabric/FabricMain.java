@@ -2,8 +2,9 @@ package ca.sperrer.p0t4t0sandwich.lppronouns.fabric;
 
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.LPPronouns;
 import ca.sperrer.p0t4t0sandwich.lppronouns.fabric.commands.FabricPronounsCommand;
-import ca.sperrer.p0t4t0sandwich.lppronouns.fabric.listeners.FabricPlayerLoginListener;
-import ca.sperrer.p0t4t0sandwich.lppronouns.fabric.listeners.FabricServerStartedListener;
+import ca.sperrer.p0t4t0sandwich.lppronouns.fabric.listeners.player.FabricPlayerLoginListener;
+import ca.sperrer.p0t4t0sandwich.lppronouns.fabric.listeners.player.FabricPlayerLogoutListener;
+import ca.sperrer.p0t4t0sandwich.lppronouns.fabric.listeners.server.FabricServerStartedListener;
 import net.fabricmc.api.DedicatedServerModInitializer;
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
@@ -12,7 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class FabricMain implements DedicatedServerModInitializer {
-    public LPPronouns LPPronouns;
+    public LPPronouns lpPronouns;
 
     // Logger
     public final Logger logger = LoggerFactory.getLogger("lppronouns");
@@ -35,9 +36,12 @@ public class FabricMain implements DedicatedServerModInitializer {
 
         logger.info("[LPPronouns]: LPPronouns is running on " + getServerType() + ".");
 
-        // Register event listeners
+        // Start LPPronouns
         ServerLifecycleEvents.SERVER_STARTED.register(new FabricServerStartedListener());
+
+        // Register player event listeners
         ServerPlayConnectionEvents.JOIN.register(new FabricPlayerLoginListener());
+        ServerPlayConnectionEvents.DISCONNECT.register(new FabricPlayerLogoutListener());
 
         // Register commands
         CommandRegistrationCallback.EVENT.register(FabricPronounsCommand::register);

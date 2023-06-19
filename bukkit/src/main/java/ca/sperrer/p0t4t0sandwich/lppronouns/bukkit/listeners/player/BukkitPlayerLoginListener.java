@@ -1,26 +1,21 @@
 package ca.sperrer.p0t4t0sandwich.lppronouns.bukkit.listeners.player;
 
-import ca.sperrer.p0t4t0sandwich.lppronouns.bukkit.BukkitMain;
+import ca.sperrer.p0t4t0sandwich.lppronouns.bukkit.player.BukkitPronounPlayer;
+import ca.sperrer.p0t4t0sandwich.lppronouns.common.listeners.player.PlayerLoginListener;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import static ca.sperrer.p0t4t0sandwich.lppronouns.bukkit.BukkitUtils.mapPlayer;
-import static ca.sperrer.p0t4t0sandwich.lppronouns.common.Utils.runTaskAsync;
-
-public class BukkitPlayerLoginListener implements Listener {
-    BukkitMain plugin = BukkitMain.getInstance();
-
+/**
+ * Listens for player logins and refreshes their pronouns.
+ */
+public class BukkitPlayerLoginListener implements Listener, PlayerLoginListener {
+    /**
+     * Called when a player logs in and refreshes their pronouns.
+     * @param event The event.
+     */
     @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event) {
-        runTaskAsync(() -> {
-            try {
-                // Refresh pronouns
-                plugin.LPPronouns.pronounsData.refreshPronouns(mapPlayer(event.getPlayer()));
-            } catch (Exception e) {
-                System.out.println(e);
-                e.printStackTrace();
-            }
-        });
+    public void onPlayerLogin(PlayerJoinEvent event) {
+        pronounPlayerLogin(new BukkitPronounPlayer(event.getPlayer()));
     }
 }
