@@ -4,7 +4,7 @@ A simple, cross API plugin that allows players to set their pronouns.
 
 Works on: Spigot, BungeeCord, Fabric, Forge, and Velocity
 
-Link to our support: [Discord](https://discord.gg/jec2jpdj7A)
+Link to our support: [Discord](https://discord.gg/NffvJd95tk)
 
 ## Download
 
