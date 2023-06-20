@@ -98,3 +98,5 @@ pronouns:
 
 - Updated the Fabric 1.17 Message listener to ignore commands (whoops)
 - Translated all Fabric events to mixins
+- Fixed build error for the Fabric mixin refmap
+- No longer depends on the Fabric API

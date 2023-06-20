@@ -8,6 +8,7 @@
   "client": [
   ],
   "server": [
+    "commands.FabricPronounsCommand",
     "listeners.player.FabricPlayerLoginListener",
     "listeners.player.FabricPlayerLogoutListener",
     "listeners.player.FabricPlayerMessageListener",
