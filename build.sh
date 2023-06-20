@@ -2,7 +2,7 @@
 
 PROJ_ID=lppronouns
 PROJ_NAME=LPPronouns
-VERSION=1.0.3
+VERSION=1.0.4
 GROUP_ID=ca/sperrer/p0t4t0sandwich
 
 # Make directories

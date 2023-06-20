@@ -93,3 +93,8 @@ pronouns:
 - Add table prefix option in config
 - Figure out why velocity can't run the command async
 - Config option for suffix weight
+
+# Release Notes
+
+- Updated the Fabric 1.17 Message listener to ignore commands (whoops)
+- Translated all Fabric events to mixins

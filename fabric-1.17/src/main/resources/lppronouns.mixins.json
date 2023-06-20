@@ -8,7 +8,10 @@
   "client": [
   ],
   "server": [
-    "listeners.player.FabricPlayerMessageListener"
+    "listeners.player.FabricPlayerLoginListener",
+    "listeners.player.FabricPlayerLogoutListener",
+    "listeners.player.FabricPlayerMessageListener",
+    "listeners.server.FabricServerStartingListener"
   ],
   "injectors": {
     "defaultRequire": 1

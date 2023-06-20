@@ -26,6 +26,7 @@ public abstract class FabricPlayerMessageListener implements PlayerMessageListen
      */
     @Inject(method = "onChatMessage", at = @At("HEAD"), cancellable = true)
     public void onPlayerMessage(ChatMessageC2SPacket packet, CallbackInfo ci) {
+        if (packet.chatMessage().startsWith("/")) return;
         if (LPPronouns.cancelChat) {
             ci.cancel();
             // Send message to message relay
