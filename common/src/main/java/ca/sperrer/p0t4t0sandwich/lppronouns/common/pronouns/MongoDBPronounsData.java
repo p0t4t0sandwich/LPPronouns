@@ -48,7 +48,8 @@ public class MongoDBPronounsData extends PronounsData {
             // Get pronouns
             return player_data.getString("pronouns");
         } catch (Exception e) {
-            System.out.println(e);
+            System.err.println(e);
+            e.printStackTrace();
         }
         return "";
     }
@@ -82,7 +83,8 @@ public class MongoDBPronounsData extends PronounsData {
             Document update = new Document("pronouns", pronouns);
             collection.updateOne(query, new Document("$set", update));
         } catch (Exception e) {
-            System.out.println(e);
+            System.err.println(e);
+            e.printStackTrace();
         }
     }
 }

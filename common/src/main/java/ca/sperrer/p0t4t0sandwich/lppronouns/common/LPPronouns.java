@@ -27,6 +27,7 @@ public class LPPronouns {
      */
     private static YamlDocument config;
     private static Object logger;
+    public static String configPath;
     private static LPPronouns singleton = null;
     private boolean STARTED = false;
     public Database database;
@@ -43,10 +44,11 @@ public class LPPronouns {
     public LPPronouns(String configPath, Object logger) {
         singleton = this;
         LPPronouns.logger = logger;
+        LPPronouns.configPath = configPath;
 
         // Config
         try {
-            config = YamlDocument.create(new File("./" + configPath + "/LPPronouns", "config.yml"),
+            config = YamlDocument.create(new File("." + File.separator + configPath + File.separator + "LPPronouns", "config.yml"),
                     Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream("config.yml"))
             );
             config.reload();
@@ -106,9 +108,10 @@ public class LPPronouns {
         if (config.getBoolean("formatting.enabled") && config.getString("formatting.format") != null) {
             cancelChat = true;
             messageRelay = new MessageRelay(config.getString("formatting.format"));
+            useLogger("[LPPronouns] Using LPPronouns as the message formatter.");
         }
 
-        useLogger("LPPronouns has been started!");
+        useLogger("[LPPronouns] LPPronouns has been started!");
     }
 
     /**

@@ -1,5 +1,6 @@
 package ca.sperrer.p0t4t0sandwich.lppronouns.common.storage;
 
+import ca.sperrer.p0t4t0sandwich.lppronouns.common.pronouns.FilesystemPronounsData;
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.pronouns.MongoDBPronounsData;
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.pronouns.MySQLPronounsData;
 import ca.sperrer.p0t4t0sandwich.lppronouns.common.pronouns.PronounsData;
@@ -19,6 +20,8 @@ public class DataSource {
     public static Database getDatabase(String type, YamlDocument config) {
         try {
             switch (type) {
+                case "filesystem":
+                    return new Filesystem(config);
                 case "mysql":
                     return new MySQLDatabase(config);
                 case "mongodb":
@@ -40,6 +43,8 @@ public class DataSource {
     public static PronounsData getPronounsData(Database database, HashMap<String, String> config) {
         try {
             switch (database.getType()) {
+                case "filesystem":
+                    return new FilesystemPronounsData(database, config);
                 case "mysql":
                     return new MySQLPronounsData(database, config);
                 case "mongodb":

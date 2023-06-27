@@ -54,8 +54,19 @@ public abstract class PronounsData {
      * @param pronouns The pronouns to set.
      */
     public void setPronouns(PronounPlayer player, String pronouns) {
+        String oldPronouns = getPronouns(player);
+
         this.dbSetPronouns(player, pronouns);
         UUID playerUuid = player.getUUID();
+
+        if (!oldPronouns.isEmpty()) {
+            // Get mapped pronouns from config
+            String mapped_old_pronouns = pronounsConfig.getOrDefault(oldPronouns, "");
+
+            // Update the player's suffix in LuckPerms
+            SuffixNode node = SuffixNode.builder(mapped_old_pronouns, 1).build();
+            luckPerms.getUserManager().modifyUser(playerUuid, user -> user.data().remove(node));
+        }
 
         if (!pronouns.isEmpty()) {
             // Get mapped pronouns from config

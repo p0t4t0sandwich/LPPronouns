@@ -2,15 +2,32 @@
 version: 1
 
 # Database configuration
-# Supported storage types: mongodb, mysql
+# Supported storage types: filesystem, mongodb, mysql
 storage:
-  type: mongodb
+  # Filesystem configuration
+  type: filesystem
   config:
-    host: localhost
-    port: 27017
-    database: playerdata
-    username: root
-    password: password
+      # The directory to store player data in
+      directory: "playerdata"
+
+# MongoDB configuration
+#  type: mongodb
+#  config:
+#    host: localhost
+#    port: 27017
+#    database: playerdata
+#    username: root
+#    password: password
+#    authSource: admin
+
+# MySQL configuration
+#  type: mysql
+#  config:
+#    host: localhost
+#    port: 3306
+#    database: playerdata
+#    username: root
+#    password: password
 
 # Message formatting configuration
 formatting:
@@ -18,7 +35,6 @@ formatting:
   enabled: true
   # %player% - Player name
   # %message% - Message
-  # %server% - Server name
   # %prefix% - Player prefix
   # %suffix% - Player suffix
   # %displayname% - Player display name

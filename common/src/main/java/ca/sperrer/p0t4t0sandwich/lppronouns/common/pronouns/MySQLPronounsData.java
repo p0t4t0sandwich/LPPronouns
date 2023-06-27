@@ -40,7 +40,8 @@ public class MySQLPronounsData extends PronounsData {
 
             con.close();
         } catch (SQLException e) {
-            System.out.println(e);
+            System.err.println(e);
+            e.printStackTrace();
         }
         return "";
     }
@@ -60,7 +61,8 @@ public class MySQLPronounsData extends PronounsData {
             pst.executeUpdate();
             con.close();
         } catch (SQLException e) {
-            System.out.println(e);
+            System.err.println(e);
+            e.printStackTrace();
         }
     }
 }

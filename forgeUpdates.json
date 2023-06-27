@@ -1,0 +1,25 @@
+{
+  "homepage": "https://github.com/p0t4t0sandwich/LPPronouns/releases",
+  "1.19": {
+    "1.0.0": "First release",
+    "1.0.1": "Implemented Forge/Fabric commands",
+    "1.0.2": "- 1.20 support\n- Revamped mod/plugin info\n- Dependency checking in place\n- Created simple API interface\n- Redid build system\n- Updated the commands\n- Added permissions for Bukkit/Bungee/Velocity",
+    "1.0.3": "- Added Neopronouns\n- Added an (optional) built-in chat formatter\n- Revamped the entire codebase",
+    "1.0.4": "- Updated the Fabric 1.17 Message listener to ignore commands (whoops)\n- Translated all Fabric events to mixins\n- Fixed build error for the Fabric mixin refmap\n- No longer depends on the Fabric API",
+    "1.0.5": "- Added the filesystem as a viable storage method\n- Actually registered the BukkitPlayerMessageListener event, so chat formatting should work now\n- Fixed an issue where the old pronouns weren't removed from luckperms"
+  },
+  "1.20": {
+    "1.0.0": "First release",
+    "1.0.1": "Implemented Forge/Fabric commands",
+    "1.0.2": "- 1.20 support\n- Revamped mod/plugin info\n- Dependency checking in place\n- Created simple API interface\n- Redid build system\n- Updated the commands\n- Added permissions for Bukkit/Bungee/Velocity",
+    "1.0.3": "- Added Neopronouns\n- Added an (optional) built-in chat formatter\n- Revamped the entire codebase",
+    "1.0.4": "- Updated the Fabric 1.17 Message listener to ignore commands (whoops)\n- Translated all Fabric events to mixins\n- Fixed build error for the Fabric mixin refmap\n- No longer depends on the Fabric API",
+    "1.0.5": "- Added the filesystem as a viable storage method\n- Actually registered the BukkitPlayerMessageListener event, so chat formatting should work now\n- Fixed an issue where the old pronouns weren't removed from luckperms"
+  },
+  "promos": {
+    "1.19-latest": "1.0.6",
+    "1.19-recommended": "1.0.5",
+    "1.20-latest": "1.0.6",
+    "1.20-recommended": "1.0.5"
+  }
+}

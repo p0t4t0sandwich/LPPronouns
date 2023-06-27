@@ -16,11 +16,12 @@ public class MongoDBDatabase extends Database<MongoClient> {
         String database = config.getString("storage.config.database");
         String username = config.getString("storage.config.username");
         String password = config.getString("storage.config.password");
+        String authSource = config.getString("storage.config.authSource");
 
         if (port == 0) {
             port = 27017;
         }
-        String URI = "mongodb://" + username + ":" + password + "@" + host + ":" + port + "/" + database + "?authSource=admin";
+        String URI = "mongodb://" + username + ":" + password + "@" + host + ":" + port + "/" + database + "?authSource=" + authSource;
         MongoClient mongoClient = MongoClients.create(URI);
 
         setConnection(mongoClient);

@@ -6,6 +6,8 @@ Works on: Spigot, BungeeCord, Fabric, Forge, and Velocity
 
 Link to our support: [Discord](https://discord.gg/NffvJd95tk)
 
+If you need the plugin ported to a specific API/version, please open an issue on GitHub.
+
 ## Download
 
 - [GitHub](https://github.com/p0t4t0sandwich/LPPronouns/releases)
@@ -19,14 +21,14 @@ Link to our support: [Discord](https://discord.gg/NffvJd95tk)
 | Server type | Versions    | Jar Name                               |
 |-------------|-------------|----------------------------------------|
 | All 1.19    | 1.19-1.19.4 | `LPPronouns-<version>-1.19.jar`        |
-| All 1.20    | 1.20-1.20.1 | `LPPronouns-<version>-1.20.jar`        |
-| Bukkit      | 1.8-1.20.1  | `LPPronouns-<version>-bukkit.jar`      |
-| BungeeCord  | 1.20-1.20.1 | `LPPronouns-<version>-bungee.jar`      |
+| All 1.20    | 1.20-1.20.x | `LPPronouns-<version>-1.20.jar`        |
+| Bukkit      | 1.8-1.20.x  | `LPPronouns-<version>-bukkit.jar`      |
+| BungeeCord  | 1.20-1.20.x | `LPPronouns-<version>-bungee.jar`      |
 | Velocity    | API v3      | `LPPronouns-<version>-velocity.jar`    |
 | Fabric 1.17 | 1.17-1.19.4 | `LPPronouns-<version>-fabric-1.17.jar` |
-| Fabric 1.20 | 1.20-1.20.1 | `LPPronouns-<version>-fabric-1.20.jar` |
+| Fabric 1.20 | 1.20-1.20.x | `LPPronouns-<version>-fabric-1.20.jar` |
 | Forge 1.19  | 1.19-1.19.4 | `LPPronouns-<version>-forge-1.19.jar`  |
-| Forge 1.20  | 1.20-1.20.1 | `LPPronouns-<version>-forge-1.20.jar`  |
+| Forge 1.20  | 1.20-1.20.x | `LPPronouns-<version>-forge-1.20.jar`  |
 
 ## Dependencies
 
@@ -45,15 +47,32 @@ This plugin requires [LuckPerms](https://luckperms.net/) to function.
 
 ```yaml
 # Database configuration
-# Supported storage types: mongodb, mysql
+# Supported storage types: filesystem, mongodb, mysql
 storage:
-  type: mongodb
+  # Filesystem configuration
+  type: filesystem
   config:
-    host: localhost
-    port: 27017
-    database: playerdata
-    username: root
-    password: password
+    # The directory to store player data in
+    directory: "playerdata"
+
+# MongoDB configuration
+#  type: mongodb
+#  config:
+#    host: localhost
+#    port: 27017
+#    database: playerdata
+#    username: root
+#    password: password
+#    authSource: admin
+
+# MySQL configuration
+#  type: mysql
+#  config:
+#    host: localhost
+#    port: 3306
+#    database: playerdata
+#    username: root
+#    password: password
 
 # Message formatting configuration
 formatting:
@@ -84,7 +103,6 @@ pronouns:
 - Improve MySQL support
 - add sqlite support
 - add h2 support
-- add filestorage support
 - Fix weird Forge errors in log
 - Add command permissions
   - Forge
@@ -95,3 +113,6 @@ pronouns:
 - Config option for suffix weight
 
 # Release Notes
+- Added the filesystem as a viable storage method
+- Actually registered the BukkitPlayerMessageListener event, so chat formatting should work now
+- Fixed an issue where the old pronouns weren't removed from luckperms
