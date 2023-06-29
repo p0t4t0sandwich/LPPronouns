@@ -2,7 +2,7 @@
 
 PROJ_ID=lppronouns
 PROJ_NAME=LPPronouns
-VERSION=1.0.5
+VERSION=1.0.6
 GROUP_ID=ca/sperrer/p0t4t0sandwich
 
 # --------------------------- Functions --------------------------------
