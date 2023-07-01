@@ -111,6 +111,14 @@ pronouns:
 - Add table prefix option in config
 - Figure out why velocity can't run the command async
 - Config option for suffix weight
+- Config option to select weather to use a suffix or prefix
+- Option to integrate DiscordSRV contexts
+
+### Rebuild Ideas
+
+- Create a way to "stack" the pronouns
+  - Example: `They/Them` + `She/Her` = `They/She`
+  - Example: `He/Him` + `They/Them` + `She/Her` = `He/They/She`
 
 # Release Notes
 - Added the filesystem as a viable storage method
