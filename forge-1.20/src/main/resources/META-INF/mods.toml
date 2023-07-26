@@ -1,6 +1,6 @@
 # https://files.minecraftforge.net/net/minecraftforge/forge/
 modLoader = "javafml"
-loaderVersion = "[41,)"
+loaderVersion = "[46,)"
 license = "GPL-3"
 issueTrackerURL="https://github.com/p0t4t0sandwich/LPPronouns/issues"
 
@@ -22,7 +22,7 @@ A simple, cross API plugin that allows players to set their pronouns.
 [[dependencies.lppronouns]]
 modId = "forge"
 mandatory = true
-versionRange = "[41,)"
+versionRange = "[46,)"
 ordering = "NONE"
 side = "BOTH"
 
@@ -30,7 +30,7 @@ side = "BOTH"
 [[dependencies.lppronouns]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.19,1.20)"
+versionRange = "[1.20,1.20.1)"
 ordering = "NONE"
 side = "BOTH"
 
