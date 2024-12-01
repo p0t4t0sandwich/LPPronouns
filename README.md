@@ -97,29 +97,6 @@ pronouns:
   # ...
 ```
 
-## TODO
-
-- Create a dynamic pronoun system (mix and match pronouns without needing to hardcode them in the config)
-- Improve MySQL support
-- add sqlite support
-- add h2 support
-- Fix weird Forge errors in log
-- Add command permissions
-  - Forge
-  - Fabric
-- Add tab completion? -- API dependent
-- Add table prefix option in config
-- Figure out why velocity can't run the command async
-- Config option for suffix weight
-- Config option to select weather to use a suffix or prefix
-- Option to integrate DiscordSRV contexts
-
-### Rebuild Ideas
-
-- Create a way to "stack" the pronouns
-  - Example: `They/Them` + `She/Her` = `They/She`
-  - Example: `He/Him` + `They/Them` + `She/Her` = `He/They/She`
-
 # Release Notes
 - Added the filesystem as a viable storage method
 - Actually registered the BukkitPlayerMessageListener event, so chat formatting should work now
